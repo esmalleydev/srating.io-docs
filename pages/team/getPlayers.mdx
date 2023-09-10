@@ -1,0 +1,226 @@
+## Players on a team
+Returns all players on a team for a specified season.
+
+### Required arguments
+`team_id` and `season`
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/team/getPlayers?team_id=87019264-8549-11ed-bf01-5296e1552828&season=2023
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'team',
+    'function': 'getPlayers',
+    'arguments: {
+      'team_id': '87019264-8549-11ed-bf01-5296e1552828',
+      'season': 2023,
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "dfa36a40-ad5a-11ed-9185-b6be2f39279c": {
+    "player_id": "dfa36a40-ad5a-11ed-9185-b6be2f39279c",
+    "first_name": "Carson",
+    "last_name": "Barrett",
+    "position": "F",
+    "height": "6-5",
+    "weight": null,
+    "number": "34",
+    "hometown": null,
+    "guid": null,
+    "deleted": 0
+  },
+  "dff6dce2-ad5a-11ed-9185-b6be2f39279c": {
+    "player_id": "dff6dce2-ad5a-11ed-9185-b6be2f39279c",
+    "first_name": "Zach",
+    "last_name": "Edey",
+    "position": "C",
+    "height": "7-4",
+    "weight": null,
+    "number": "15",
+    "hometown": null,
+    "guid": null,
+    "deleted": 0
+  },
+  "e0482db8-ad5a-11ed-9185-b6be2f39279c": {
+    "player_id": "e0482db8-ad5a-11ed-9185-b6be2f39279c",
+    "first_name": "Matt",
+    "last_name": "Frost",
+    "position": "F",
+    "height": "6-5",
+    "weight": null,
+    "number": "21",
+    "hometown": null,
+    "guid": null,
+    "deleted": 0
+  },
+  "e0947bc5-ad5a-11ed-9185-b6be2f39279c": {
+    "player_id": "e0947bc5-ad5a-11ed-9185-b6be2f39279c",
+    "first_name": "Caleb",
+    "last_name": "Furst",
+    "position": "F",
+    "height": "6-10",
+    "weight": null,
+    "number": "1",
+    "hometown": null,
+    "guid": null,
+    "deleted": 0
+  },
+  "e0e338af-ad5a-11ed-9185-b6be2f39279c": {
+    "player_id": "e0e338af-ad5a-11ed-9185-b6be2f39279c",
+    "first_name": "Mason",
+    "last_name": "Gillis",
+    "position": "F",
+    "height": "6-6",
+    "weight": null,
+    "number": "0",
+    "hometown": null,
+    "guid": null,
+    "deleted": 0
+  },
+  "e13482c8-ad5a-11ed-9185-b6be2f39279c": {
+    "player_id": "e13482c8-ad5a-11ed-9185-b6be2f39279c",
+    "first_name": "Camden",
+    "last_name": "Heide",
+    "position": "F",
+    "height": "6-7",
+    "weight": null,
+    "number": "23",
+    "hometown": null,
+    "guid": null,
+    "deleted": 0
+  },
+  "e18335c8-ad5a-11ed-9185-b6be2f39279c": {
+    "player_id": "e18335c8-ad5a-11ed-9185-b6be2f39279c",
+    "first_name": "David",
+    "last_name": "Jenkins Jr.",
+    "position": "G",
+    "height": "6-1",
+    "weight": null,
+    "number": "14",
+    "hometown": null,
+    "guid": null,
+    "deleted": 0
+  },
+  "e1d56aab-ad5a-11ed-9185-b6be2f39279c": {
+    "player_id": "e1d56aab-ad5a-11ed-9185-b6be2f39279c",
+    "first_name": "Trey",
+    "last_name": "Kaufman-Renn",
+    "position": "F",
+    "height": "6-9",
+    "weight": null,
+    "number": "4",
+    "hometown": null,
+    "guid": null,
+    "deleted": 0
+  },
+  "e225061f-ad5a-11ed-9185-b6be2f39279c": {
+    "player_id": "e225061f-ad5a-11ed-9185-b6be2f39279c",
+    "first_name": "Sam",
+    "last_name": "King",
+    "position": "F",
+    "height": "6-8",
+    "weight": null,
+    "number": "24",
+    "hometown": null,
+    "guid": null,
+    "deleted": 0
+  },
+  "e27545f0-ad5a-11ed-9185-b6be2f39279c": {
+    "player_id": "e27545f0-ad5a-11ed-9185-b6be2f39279c",
+    "first_name": "Fletcher",
+    "last_name": "Loyer",
+    "position": "G",
+    "height": "6-4",
+    "weight": null,
+    "number": "2",
+    "hometown": null,
+    "guid": null,
+    "deleted": 0
+  },
+  "e2c0f7a3-ad5a-11ed-9185-b6be2f39279c": {
+    "player_id": "e2c0f7a3-ad5a-11ed-9185-b6be2f39279c",
+    "first_name": "Chase",
+    "last_name": "Martin",
+    "position": "G",
+    "height": "6-3",
+    "weight": null,
+    "number": "22",
+    "hometown": null,
+    "guid": null,
+    "deleted": 0
+  },
+  "e30f060d-ad5a-11ed-9185-b6be2f39279c": {
+    "player_id": "e30f060d-ad5a-11ed-9185-b6be2f39279c",
+    "first_name": "Ethan",
+    "last_name": "Morton",
+    "position": "G",
+    "height": "6-6",
+    "weight": null,
+    "number": "25",
+    "hometown": null,
+    "guid": null,
+    "deleted": 0
+  },
+  "e35d124b-ad5a-11ed-9185-b6be2f39279c": {
+    "player_id": "e35d124b-ad5a-11ed-9185-b6be2f39279c",
+    "first_name": "Brandon",
+    "last_name": "Newman",
+    "position": "G",
+    "height": "6-5",
+    "weight": null,
+    "number": "5",
+    "hometown": null,
+    "guid": null,
+    "deleted": 0
+  },
+  "e3acb3a8-ad5a-11ed-9185-b6be2f39279c": {
+    "player_id": "e3acb3a8-ad5a-11ed-9185-b6be2f39279c",
+    "first_name": "Braden",
+    "last_name": "Smith",
+    "position": "G",
+    "height": "6-0",
+    "weight": null,
+    "number": "3",
+    "hometown": null,
+    "guid": null,
+    "deleted": 0
+  },
+  "e3f9bb79-ad5a-11ed-9185-b6be2f39279c": {
+    "player_id": "e3f9bb79-ad5a-11ed-9185-b6be2f39279c",
+    "first_name": "Brian",
+    "last_name": "Waddell",
+    "position": "F",
+    "height": "6-8",
+    "weight": null,
+    "number": "11",
+    "hometown": null,
+    "guid": null,
+    "deleted": 0
+  }
+}
+```
+

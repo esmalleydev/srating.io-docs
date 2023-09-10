@@ -1,0 +1,114 @@
+## Team statistics
+Returns statistics for a team in a specified season.
+
+### Required arguments
+`team_id` and `season`
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/team/getStats?team_id=87019264-8549-11ed-bf01-5296e1552828&season=2023
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'team',
+    'function': 'getPlayers',
+    'arguments: {
+      'team_id': '87019264-8549-11ed-bf01-5296e1552828',
+      'season': 2023,
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "games": 35,
+  "wins": 29,
+  "losses": 6,
+  "homewins": 14,
+  "homelosses": 2,
+  "roadwins": 8,
+  "roadlosses": 3,
+  "neutralwins": 7,
+  "neutrallosses": 1,
+  "confwins": 15,
+  "conflosses": 5,
+  "win_margin": 13.31,
+  "loss_margin": 6.5,
+  "confwin_margin": 11.33,
+  "confloss_margin": 6.8,
+  "streak": -1,
+  "fatigue": 0,
+  "desperation": 0,
+  "over_confidence": 0,
+  "minutes_played": 200.66,
+  "field_goal": 25.26,
+  "field_goal_attempts": 55.31,
+  "field_goal_percentage": 45.66,
+  "two_point_field_goal": 18.43,
+  "two_point_field_goal_attempts": 34.09,
+  "two_point_field_goal_percentage": 54.07,
+  "three_point_field_goal": 6.83,
+  "three_point_field_goal_attempts": 21.23,
+  "three_point_field_goal_percentage": 32.17,
+  "free_throws": 15.31,
+  "free_throw_attempts": 20.57,
+  "free_throw_percentage": 74.44,
+  "offensive_rebounds": 11,
+  "defensive_rebounds": 25.17,
+  "total_rebounds": 36.17,
+  "assists": 15.49,
+  "steals": 4.74,
+  "blocks": 3.69,
+  "turnovers": 10.57,
+  "fouls": 13.69,
+  "points": 72.66,
+  "possessions": 66.16,
+  "offensive_rating": 112.48,
+  "defensive_rating": 95.67,
+  "efficiency_rating": 16.81,
+  "opponent_minutes_played": 200.66,
+  "opponent_field_goal": 24.06,
+  "opponent_field_goal_attempts": 57.83,
+  "opponent_field_goal_percentage": 41.6,
+  "opponent_two_point_field_goal": 17.63,
+  "opponent_two_point_field_goal_attempts": 37.34,
+  "opponent_two_point_field_goal_percentage": 47.21,
+  "opponent_three_point_field_goal": 6.43,
+  "opponent_three_point_field_goal_attempts": 20.49,
+  "opponent_three_point_field_goal_percentage": 31.38,
+  "opponent_free_throws": 8.2,
+  "opponent_free_throw_attempts": 11.11,
+  "opponent_free_throw_percentage": 73.78,
+  "opponent_offensive_rebounds": 6.37,
+  "opponent_defensive_rebounds": 18.14,
+  "opponent_total_rebounds": 24.51,
+  "opponent_assists": 12.34,
+  "opponent_steals": 6.14,
+  "opponent_blocks": 2.94,
+  "opponent_turnovers": 9.09,
+  "opponent_fouls": 18.86,
+  "opponent_points": 62.74,
+  "opponent_possessions": 65.02
+}
+```
+

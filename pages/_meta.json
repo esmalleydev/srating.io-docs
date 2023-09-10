@@ -1,3 +1,27 @@
 {
-  "index": "Introduction"
+  "index": "Get started",
+  "srating": {
+    "title": "srating",
+    "type": "page",
+    "href": "https://srating.io/"
+  },
+  "pricing": {
+    "title": "Pricing",
+    "type": "page",
+    "href": "https://srating.io/pricing"
+  },
+  "---": {
+    "type": "separator"
+  },
+  "team": "Team",
+  "player": "Player",
+  "cbb_game": "Games / Scores",
+  "cbb_game_odds": "Odds",
+  "cbb_boxscore": "Boxscore",
+  "cbb_player_boxscore": "Player boxscore",
+  "cbb_game_pbp": "Play by play",
+  "cbb_ranking": "Ranking",
+  "cbb_statistic_ranking": "Statistic ranking",
+  "cbb_player_statistic_ranking": "Player statistic ranking",
+  "cbb_elo": "ELO"
 }

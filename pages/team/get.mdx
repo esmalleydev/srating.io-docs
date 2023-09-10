@@ -1,0 +1,58 @@
+## Get a team row
+
+This request will find the first matching row and typically only used when passing in the `team_id` argument.
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/team/get?team_id=87019264-8549-11ed-bf01-5296e1552828
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'team',
+    'function': 'get',
+    'arguments: {
+      'team_id': '87019264-8549-11ed-bf01-5296e1552828',
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "team_id": "87019264-8549-11ed-bf01-5296e1552828",
+  "char6": "PURDUE",
+  "code": "Purdue",
+  "name": "Purdue Boilermakers",
+  "alt_name": "Purdue",
+  "primary_color": "#010101",
+  "secondary_color": null,
+  "cbb_d1": 1,
+  "cbb": 1,
+  "cfb": 1,
+  "nba": 0,
+  "nfl": 0,
+  "nhl": 0,
+  "guid": null,
+  "deleted": 0
+}
+```
+

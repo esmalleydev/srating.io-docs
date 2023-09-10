@@ -1,1 +1,164 @@
-## Hello MDX
+## Connect to our API in a few short steps
+
+### Get a free trial or paid API key
+[View our plans here...](https://srating.io/pricing) all you need is an email address. The free trial is limited to 500 requests per month and some data maybe scrambled.
+
+### Required Headers
+```console
+X-API-KEY
+```
+You must include your API key in the header under "X-API-KEY"
+
+### Send a request
+
+GET
+
+```console
+https://api.srating.io/v1/cbb_game/getGames?start_date=2023-04-03
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'cbb_game',
+    'function': 'getGames',
+    'arguments: {
+      'start_date': '2023-04-03',
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "b58918bc-d155-11ed-9185-b6be2f39279c":{
+    "cbb_game_id":"b58918bc-d155-11ed-9185-b6be2f39279c",
+    "season":"2023",
+    "away_team_id":"885557ec-8549-11ed-bf01-5296e1552828",
+    "home_team_id":"75a9cb12-8549-11ed-bf01-5296e1552828",
+    "network":"CBS",
+    "home_team_rating":null,
+    "away_team_rating":null,
+    "away_score":59,
+    "home_score":76,
+    "status":"final",
+    "current_period":"Final",
+    "clock":"0:00",
+    "start_date":"2023-04-03T00:00:00.000Z",
+    "start_datetime":"2023-04-03T21:20:00.000Z",
+    "start_timestamp":1680571200,
+    "updated_at":"2023-04-03T23:38:01.000Z",
+    "attendance":72423,
+    "neutral_site":1,
+    "is_conf_game":0,
+    "boxscore":1,
+    "boxscore_error":0,
+    "guid":"a18c3efa-9ffb-454b-9226-46315f9e8b22",
+    "deleted":0,
+    "odds":{
+      "cbb_game_odds_id":"6680083a-d156-11ed-9185-b6be2f39279c",
+      "cbb_game_id":"b58918bc-d155-11ed-9185-b6be2f39279c",
+      "pre_game_money_line_away":283,
+      "pre_game_money_line_home":-363,
+      "live_game_money_line_away":875,
+      "live_game_money_line_home":-3500,
+      "pre_game_spread_away":7,
+      "pre_game_spread_home":-7,
+      "live_game_spread_away":13,
+      "live_game_spread_home":-13,
+      "pre_game_over":131,
+      "pre_game_under":131,
+      "live_game_over":139.5,
+      "live_game_under":139.5,
+      "guid":"9977bb40-d0c1-4c47-8aef-2d1a296353b5",
+      "deleted":0
+    },
+    "teams":{
+      "75a9cb12-8549-11ed-bf01-5296e1552828":{
+        "team_id":"75a9cb12-8549-11ed-bf01-5296e1552828",
+        "char6":"UCONN",
+        "code":"Connecticut",
+        "name":"Connecticut Huskies",
+        "alt_name":"Connecticut",
+        "primary_color":"#0C2340",
+        "secondary_color":null,
+        "cbb_d1":1,
+        "cbb":1,
+        "cfb":1,
+        "nba":0,
+        "nfl":0,
+        "nhl":0,
+        "guid":null,
+        "deleted":0,
+        "conference":"Big East",
+        "ranking":{
+          "cbb_ranking_id":"8e858382-d234-11ed-9185-b6be2f39279c",
+          "season":2023,
+          "team_id":"75a9cb12-8549-11ed-bf01-5296e1552828",
+          "composite_rank":4,
+          "elo_rank":6,
+          "kenpom_rank":1,
+          "srs_rank":2,
+          "ap_rank":10,
+          "coaches_rank":12,
+          "net_rank":8,
+          "date_of_rank":"2023-04-03T00:00:00.000Z",
+          "current":0,
+          "external_id":null,
+          "guid":null,
+          "deleted":0
+        }
+      },
+      "885557ec-8549-11ed-bf01-5296e1552828":{
+        "team_id":"885557ec-8549-11ed-bf01-5296e1552828",
+        "char6":"SDSU",
+        "code":"San Diego State",
+        "name":"San Diego State Aztecs",
+        "alt_name":"San Diego St.",
+        "primary_color":"#A6192E",
+        "secondary_color":null,
+        "cbb_d1":1,
+        "cbb":1,
+        "cfb":1,
+        "nba":0,
+        "nfl":0,
+        "nhl":0,
+        "guid":null,
+        "deleted":0,
+        "conference":"Mountain West",
+        "ranking":{
+          "cbb_ranking_id":"8f93a6a6-d234-11ed-9185-b6be2f39279c",
+          "season":2023,
+          "team_id":"885557ec-8549-11ed-bf01-5296e1552828",
+          "composite_rank":11,
+          "elo_rank":1,
+          "kenpom_rank":14,
+          "srs_rank":15,
+          "ap_rank":18,
+          "coaches_rank":18,
+          "net_rank":14,
+          "date_of_rank":"2023-04-03T00:00:00.000Z",
+          "current":0,
+          "external_id":null,
+          "guid":null,
+          "deleted":0
+        }
+      }
+    }
+  }
+}
+```
