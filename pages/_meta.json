@@ -1,5 +1,6 @@
 {
   "index": "Get started",
+  "headers": "Headers",
   "srating": {
     "title": "srating",
     "type": "page",
@@ -21,7 +22,5 @@
   "cbb_player_boxscore": "Player boxscore",
   "cbb_game_pbp": "Play by play",
   "cbb_ranking": "Ranking",
-  "cbb_statistic_ranking": "Statistic ranking",
-  "cbb_player_statistic_ranking": "Player statistic ranking",
   "cbb_elo": "ELO"
 }

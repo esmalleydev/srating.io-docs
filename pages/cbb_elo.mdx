@@ -1,0 +1,39 @@
+The cbb_elo table will contain elo data for every team in the season. ELO is ran after a game is finalized.
+
+You can use `current` to find the most recent calculated ELO for a team in a season.
+
+The `cbb_game_id` column is used to track the last game which the ELO was calculated.
+
+### Example row
+```json
+{
+  "cbb_elo_id": "29d461d9-c52d-11ed-9185-b6be2f39279c",
+  "team_id": "87019264-8549-11ed-bf01-5296e1552828",
+  "cbb_game_id": "aac1f4b2-c1b5-11ed-9185-b6be2f39279c",
+  "season": 2023,
+  "elo": 1702,
+  "current": 1,
+  "date_of_entry": "2023-03-18T05:35:28.000Z",
+  "updated_at": "2023-03-18T05:35:28.000Z",
+  "guid": "a4046068-0ef3-4057-bfc2-cbb79712d2af",
+  "deleted": 0
+}
+```
+
+### Schema
+```console
++---------------+--------------+
+| Field         | Type         |
++---------------+--------------+
+| cbb_elo_id    | char(36)     |
+| team_id       | char(36)     |
+| cbb_game_id   | char(36)     |
+| season        | int unsigned |
+| elo           | int unsigned |
+| current       | tinyint(1)   |
+| date_of_entry | datetime     |
+| updated_at    | datetime     |
+| guid          | char(36)     |
+| deleted       | tinyint(1)   |
++---------------+--------------+
+```

@@ -1,0 +1,70 @@
+## Get a player's seasons
+
+This request returns all `player_team_season` rows for a player. You can then find the assoicated team for the season.
+
+### Required arguments
+`player_id`
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/player/getSeasons?player_id=dff6dce2-ad5a-11ed-9185-b6be2f39279c
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'player',
+    'function': 'getSeasons',
+    'arguments': {
+      'player_id': 'dff6dce2-ad5a-11ed-9185-b6be2f39279c',
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "5ba83b5b-f653-11ed-9185-b6be2f39279c": {
+    "player_team_season_id": "5ba83b5b-f653-11ed-9185-b6be2f39279c",
+    "player_id": "dff6dce2-ad5a-11ed-9185-b6be2f39279c",
+    "team_id": "87019264-8549-11ed-bf01-5296e1552828",
+    "season": 2021,
+    "guid": null,
+    "deleted": 0
+  },
+  "978f7869-f0e0-11ed-9185-b6be2f39279c": {
+    "player_team_season_id": "978f7869-f0e0-11ed-9185-b6be2f39279c",
+    "player_id": "dff6dce2-ad5a-11ed-9185-b6be2f39279c",
+    "team_id": "87019264-8549-11ed-bf01-5296e1552828",
+    "season": 2022,
+    "guid": null,
+    "deleted": 0
+  },
+  "e01eab56-ad5a-11ed-9185-b6be2f39279c": {
+    "player_team_season_id": "e01eab56-ad5a-11ed-9185-b6be2f39279c",
+    "player_id": "dff6dce2-ad5a-11ed-9185-b6be2f39279c",
+    "team_id": "87019264-8549-11ed-bf01-5296e1552828",
+    "season": 2023,
+    "guid": null,
+    "deleted": 0
+  }
+}
+```
+

@@ -1,0 +1,53 @@
+## Get a player row
+
+This request will find the first matching row and typically only used when passing in the `player_id` argument.
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/player/get?player_id=dff6dce2-ad5a-11ed-9185-b6be2f39279c
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'player',
+    'function': 'get',
+    'arguments': {
+      'player_id': 'dff6dce2-ad5a-11ed-9185-b6be2f39279c',
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "player_id": "dff6dce2-ad5a-11ed-9185-b6be2f39279c",
+  "first_name": "Zach",
+  "last_name": "Edey",
+  "position": "C",
+  "height": "7-4",
+  "weight": null,
+  "number": "15",
+  "hometown": null,
+  "guid": null,
+  "deleted": 0
+}
+```
+

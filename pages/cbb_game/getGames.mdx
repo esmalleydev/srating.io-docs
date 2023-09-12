@@ -1,0 +1,275 @@
+## Get games
+
+This will returns all games matching a specified argument, typically used with `start_date`.
+
+This call will return more relevant data about the game, including the current odds and ranking data.
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/cbb_game/getGames?start_date=2023-04-01
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'cbb_game',
+    'function': 'getGames',
+    'arguments': {
+      'start_date': '2023-04-01',
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "062b1103-cfd4-11ed-9185-b6be2f39279c": {
+    "cbb_game_id": "062b1103-cfd4-11ed-9185-b6be2f39279c",
+    "season": "2023",
+    "away_team_id": "7860d20d-8549-11ed-bf01-5296e1552828",
+    "home_team_id": "885557ec-8549-11ed-bf01-5296e1552828",
+    "network": "CBS",
+    "home_team_rating": null,
+    "away_team_rating": null,
+    "away_score": 75,
+    "home_score": 81,
+    "status": "final",
+    "current_period": "Final",
+    "clock": "0:00",
+    "start_date": "2023-04-01T04:00:00.000Z",
+    "start_datetime": "2023-04-01T22:09:00.000Z",
+    "start_timestamp": 1680386940,
+    "updated_at": "2023-04-02T03:19:54.000Z",
+    "attendance": 73860,
+    "neutral_site": 1,
+    "is_conf_game": 0,
+    "boxscore": 1,
+    "boxscore_error": 0,
+    "guid": "a9e60421-496a-438f-9c61-8f4471065d57",
+    "deleted": 0,
+    "odds": {
+      "cbb_game_odds_id": "b7e5f2be-cfd4-11ed-9185-b6be2f39279c",
+      "cbb_game_id": "062b1103-cfd4-11ed-9185-b6be2f39279c",
+      "pre_game_money_line_away": 124,
+      "pre_game_money_line_home": -148,
+      "live_game_money_line_away": -300,
+      "live_game_money_line_home": 219,
+      "pre_game_spread_away": 2.5,
+      "pre_game_spread_home": -2.5,
+      "live_game_spread_away": 0.5,
+      "live_game_spread_home": -0.5,
+      "pre_game_over": 130.5,
+      "pre_game_under": 130.5,
+      "live_game_over": 139,
+      "live_game_under": 139,
+      "guid": "749e0944-1b13-41c8-9128-30ef651f854c",
+      "deleted": 0
+    },
+    "teams": {
+      "7860d20d-8549-11ed-bf01-5296e1552828": {
+        "team_id": "7860d20d-8549-11ed-bf01-5296e1552828",
+        "char6": "FAU",
+        "code": "Florida Atlantic",
+        "name": "Florida Atlantic Owls",
+        "alt_name": "Florida Atlantic",
+        "primary_color": "#002855",
+        "secondary_color": null,
+        "cbb_d1": 1,
+        "cbb": 1,
+        "cfb": 1,
+        "nba": 0,
+        "nfl": 0,
+        "nhl": 0,
+        "guid": null,
+        "deleted": 0,
+        "conference": "C-USA",
+        "ranking": {
+          "cbb_ranking_id": "2213febb-d0a2-11ed-9185-b6be2f39279c",
+          "season": 2023,
+          "team_id": "7860d20d-8549-11ed-bf01-5296e1552828",
+          "composite_rank": 17,
+          "elo_rank": 1,
+          "kenpom_rank": 17,
+          "srs_rank": 35,
+          "ap_rank": 25,
+          "coaches_rank": 25,
+          "net_rank": 13,
+          "date_of_rank": "2023-04-01T04:00:00.000Z",
+          "current": 0,
+          "external_id": null,
+          "guid": null,
+          "deleted": 0
+        }
+      },
+      "885557ec-8549-11ed-bf01-5296e1552828": {
+        "team_id": "885557ec-8549-11ed-bf01-5296e1552828",
+        "char6": "SDSU",
+        "code": "San Diego State",
+        "name": "San Diego State Aztecs",
+        "alt_name": "San Diego St.",
+        "primary_color": "#A6192E",
+        "secondary_color": null,
+        "cbb_d1": 1,
+        "cbb": 1,
+        "cfb": 1,
+        "nba": 0,
+        "nfl": 0,
+        "nhl": 0,
+        "guid": null,
+        "deleted": 0,
+        "conference": "Mountain West",
+        "ranking": {
+          "cbb_ranking_id": "22f30f78-d0a2-11ed-9185-b6be2f39279c",
+          "season": 2023,
+          "team_id": "885557ec-8549-11ed-bf01-5296e1552828",
+          "composite_rank": 11,
+          "elo_rank": 1,
+          "kenpom_rank": 14,
+          "srs_rank": 15,
+          "ap_rank": 18,
+          "coaches_rank": 18,
+          "net_rank": 14,
+          "date_of_rank": "2023-04-01T04:00:00.000Z",
+          "current": 0,
+          "external_id": null,
+          "guid": null,
+          "deleted": 0
+        }
+      }
+    }
+  },
+  "06325ed9-cfd4-11ed-9185-b6be2f39279c": {
+    "cbb_game_id": "06325ed9-cfd4-11ed-9185-b6be2f39279c",
+    "season": "2023",
+    "away_team_id": "80fe6c2f-8549-11ed-bf01-5296e1552828",
+    "home_team_id": "75a9cb12-8549-11ed-bf01-5296e1552828",
+    "network": "CBS",
+    "home_team_rating": null,
+    "away_team_rating": null,
+    "away_score": 61,
+    "home_score": 77,
+    "status": "final",
+    "current_period": "Final",
+    "clock": "0:00",
+    "start_date": "2023-04-01T04:00:00.000Z",
+    "start_datetime": "2023-04-02T01:16:00.000Z",
+    "start_timestamp": 1680398160,
+    "updated_at": "2023-04-02T03:19:54.000Z",
+    "attendance": 73860,
+    "neutral_site": 1,
+    "is_conf_game": 0,
+    "boxscore": 1,
+    "boxscore_error": 0,
+    "guid": "e1f482e8-80bc-4059-a538-eb8f04231d95",
+    "deleted": 0,
+    "odds": {
+      "cbb_game_odds_id": "b7e810c6-cfd4-11ed-9185-b6be2f39279c",
+      "cbb_game_id": "06325ed9-cfd4-11ed-9185-b6be2f39279c",
+      "pre_game_money_line_away": 205,
+      "pre_game_money_line_home": -252,
+      "live_game_money_line_away": 799,
+      "live_game_money_line_home": -5125,
+      "pre_game_spread_away": 5.5,
+      "pre_game_spread_home": -5.5,
+      "live_game_spread_away": 13,
+      "live_game_spread_home": -13,
+      "pre_game_over": 149,
+      "pre_game_under": 149,
+      "live_game_over": 140,
+      "live_game_under": 140,
+      "guid": "12f0acb8-4281-4bcb-90eb-8a7c2299c002",
+      "deleted": 0
+    },
+    "teams": {
+      "75a9cb12-8549-11ed-bf01-5296e1552828": {
+        "team_id": "75a9cb12-8549-11ed-bf01-5296e1552828",
+        "char6": "UCONN",
+        "code": "Connecticut",
+        "name": "Connecticut Huskies",
+        "alt_name": "Connecticut",
+        "primary_color": "#0C2340",
+        "secondary_color": null,
+        "cbb_d1": 1,
+        "cbb": 1,
+        "cfb": 1,
+        "nba": 0,
+        "nfl": 0,
+        "nhl": 0,
+        "guid": null,
+        "deleted": 0,
+        "conference": "Big East",
+        "ranking": {
+          "cbb_ranking_id": "21f1ec92-d0a2-11ed-9185-b6be2f39279c",
+          "season": 2023,
+          "team_id": "75a9cb12-8549-11ed-bf01-5296e1552828",
+          "composite_rank": 5,
+          "elo_rank": 8,
+          "kenpom_rank": 1,
+          "srs_rank": 2,
+          "ap_rank": 10,
+          "coaches_rank": 12,
+          "net_rank": 8,
+          "date_of_rank": "2023-04-01T04:00:00.000Z",
+          "current": 0,
+          "external_id": null,
+          "guid": null,
+          "deleted": 0
+        }
+      },
+      "80fe6c2f-8549-11ed-bf01-5296e1552828": {
+        "team_id": "80fe6c2f-8549-11ed-bf01-5296e1552828",
+        "char6": "MIAMI",
+        "code": "Miami (FL)",
+        "name": "Miami (FL) Hurricanes",
+        "alt_name": "Miami FL",
+        "primary_color": "#154734",
+        "secondary_color": null,
+        "cbb_d1": 1,
+        "cbb": 1,
+        "cfb": 1,
+        "nba": 0,
+        "nfl": 0,
+        "nhl": 0,
+        "guid": null,
+        "deleted": 0,
+        "conference": "ACC",
+        "ranking": {
+          "cbb_ranking_id": "22942f3b-d0a2-11ed-9185-b6be2f39279c",
+          "season": 2023,
+          "team_id": "80fe6c2f-8549-11ed-bf01-5296e1552828",
+          "composite_rank": 20,
+          "elo_rank": 7,
+          "kenpom_rank": 22,
+          "srs_rank": 33,
+          "ap_rank": 16,
+          "coaches_rank": 15,
+          "net_rank": 35,
+          "date_of_rank": "2023-04-01T04:00:00.000Z",
+          "current": 0,
+          "external_id": null,
+          "guid": null,
+          "deleted": 0
+        }
+      }
+    }
+  }
+}
+```
+

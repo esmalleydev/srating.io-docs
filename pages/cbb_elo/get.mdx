@@ -1,0 +1,54 @@
+## Get an ELO row
+
+This request will find the first matching row and typically only used when passing in the `cbb_elo_id` or `team_id` and `season` argument.
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/cbb_elo/get?team_id=87019264-8549-11ed-bf01-5296e1552828&season=2023&current=1
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'cbb_elo',
+    'function': 'get',
+    'arguments': {
+      'team_id': '87019264-8549-11ed-bf01-5296e1552828',
+      'season': 2023,
+      'current': 1,
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "cbb_elo_id": "29d461d9-c52d-11ed-9185-b6be2f39279c",
+  "team_id": "87019264-8549-11ed-bf01-5296e1552828",
+  "cbb_game_id": "aac1f4b2-c1b5-11ed-9185-b6be2f39279c",
+  "season": 2023,
+  "elo": 1702,
+  "current": 1,
+  "date_of_entry": "2023-03-18T05:35:28.000Z",
+  "updated_at": "2023-03-18T05:35:28.000Z",
+  "guid": "a4046068-0ef3-4057-bfc2-cbb79712d2af",
+  "deleted": 0
+}
+```

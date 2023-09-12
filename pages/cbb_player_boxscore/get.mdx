@@ -1,0 +1,73 @@
+## Get a player boxscore row
+
+This request will find the first matching row and typically only used when passing in the `cbb_player_boxscore_id` or `cbb_game_id` and `player_id` argument.
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/cbb_player_boxscore/get?cbb_game_id=b58918bc-d155-11ed-9185-b6be2f39279c&player_id=4ce4ef10-ad5a-11ed-9185-b6be2f39279c
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'cbb_player_boxscore',
+    'function': 'get',
+    'arguments': {
+      'cbb_game_id': 'b58918bc-d155-11ed-9185-b6be2f39279c',
+      'player_id': '4ce4ef10-ad5a-11ed-9185-b6be2f39279c',
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "cbb_player_boxscore_id": "adbc52ab-d287-11ed-9185-b6be2f39279c",
+  "cbb_game_id": "b58918bc-d155-11ed-9185-b6be2f39279c",
+  "team_id": "885557ec-8549-11ed-bf01-5296e1552828",
+  "player_id": "4ce4ef10-ad5a-11ed-9185-b6be2f39279c",
+  "season": 2023,
+  "minutes_played": 22.28,
+  "field_goal": 3,
+  "field_goal_attempts": 5,
+  "field_goal_percentage": 60,
+  "two_point_field_goal": 2,
+  "two_point_field_goal_attempts": 4,
+  "two_point_field_goal_percentage": 50,
+  "three_point_field_goal": 1,
+  "three_point_field_goal_attempts": 1,
+  "three_point_field_goal_percentage": 100,
+  "free_throws": 7,
+  "free_throw_attempts": 9,
+  "free_throw_percentage": 77.78,
+  "offensive_rebounds": 1,
+  "defensive_rebounds": 3,
+  "total_rebounds": 4,
+  "assists": 1,
+  "steals": 0,
+  "blocks": 0,
+  "turnovers": 0,
+  "fouls": 1,
+  "points": 14,
+  "guid": "64ecc50b-ffc8-4173-b272-64956c5bf62e",
+  "deleted": 0
+}
+```
+

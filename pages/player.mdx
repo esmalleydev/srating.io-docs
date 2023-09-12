@@ -1,0 +1,35 @@
+The player table will contain player information
+
+### Example row
+```json
+{
+  "player_id": "dff6dce2-ad5a-11ed-9185-b6be2f39279c",
+  "first_name": "Zach",
+  "last_name": "Edey",
+  "position": "C",
+  "height": "7-4",
+  "weight": null,
+  "number": "15",
+  "hometown": null,
+  "guid": null,
+  "deleted": 0
+}
+```
+
+### Schema
+```console
++-------------------------+--------------+
+| Field                   | Type         |
++-------------------------+--------------+
+| player_id               | char(36)     |
+| first_name              | varchar(255) |
+| last_name               | varchar(255) |
+| position                | varchar(20)  |
+| height                  | varchar(20)  |
+| weight                  | varchar(20)  |
+| number                  | varchar(3)   |
+| hometown                | varchar(255) |
+| guid                    | char(36)     |
+| deleted                 | tinyint(1)   |
++-------------------------+--------------+
+```

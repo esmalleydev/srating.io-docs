@@ -1,3 +1,5 @@
 {
-  "index": "getGames"
+  "get": "get",
+  "getGames": "getGames",
+  "getOdds": "getOdds"
 }

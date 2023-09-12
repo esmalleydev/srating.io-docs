@@ -1,0 +1,47 @@
+The cbb_game_odds table will contain odds information for a game.
+
+### Example row
+```json
+{
+  "cbb_game_odds_id": "b7e810c6-cfd4-11ed-9185-b6be2f39279c",
+  "cbb_game_id": "06325ed9-cfd4-11ed-9185-b6be2f39279c",
+  "pre_game_money_line_away": 205,
+  "pre_game_money_line_home": -252,
+  "live_game_money_line_away": 799,
+  "live_game_money_line_home": -5125,
+  "pre_game_spread_away": 5.5,
+  "pre_game_spread_home": -5.5,
+  "live_game_spread_away": 13,
+  "live_game_spread_home": -13,
+  "pre_game_over": 149,
+  "pre_game_under": 149,
+  "live_game_over": 140,
+  "live_game_under": 140,
+  "guid": "12f0acb8-4281-4bcb-90eb-8a7c2299c002",
+  "deleted": 0
+}
+```
+
+### Schema
+```console
++---------------------------+---------------+
+| Field                     | Type          |
++---------------------------+---------------+
+| cbb_game_odds_id          | char(36)      |
+| cbb_game_id               | char(36)      |
+| pre_game_money_line_away  | int           |
+| pre_game_money_line_home  | int           |
+| live_game_money_line_away | int           |
+| live_game_money_line_home | int           |
+| pre_game_spread_away      | decimal(20,2) |
+| pre_game_spread_home      | decimal(20,2) |
+| live_game_spread_away     | decimal(20,2) |
+| live_game_spread_home     | decimal(20,2) |
+| pre_game_over             | decimal(20,2) |
+| pre_game_under            | decimal(20,2) |
+| live_game_over            | decimal(20,2) |
+| live_game_under           | decimal(20,2) |
+| guid                      | char(36)      |
+| deleted                   | tinyint(1)    |
++---------------------------+---------------+
+```

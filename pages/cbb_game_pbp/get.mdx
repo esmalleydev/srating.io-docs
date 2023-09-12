@@ -1,0 +1,63 @@
+## Get a play by play row
+
+This request will find the first matching row and typically only used when passing in the `cbb_game_pbp_id` argument.
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/cbb_game_pbp/get?cbb_game_pbp_id=ff2b0489-bee5-11ed-9185-b6be2f39279c
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'cbb_game_pbp',
+    'function': 'get',
+    'arguments': {
+      'cbb_game_pbp_id': 'ff2b0489-bee5-11ed-9185-b6be2f39279c',
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "cbb_game_pbp_id": "ff2b0489-bee5-11ed-9185-b6be2f39279c",
+  "cbb_game_id": "d85cdf0b-bdb8-11ed-9185-b6be2f39279c",
+  "team_id": null,
+  "current_period": "2",
+  "clock": "07:59",
+  "description": "Foul personal (one and one) (in the paint) Adam Kunkel(Xavier), foul on Da'Sean Nelson(DePaul)",
+  "away_score": 71,
+  "home_score": 65,
+  "score_difference": -6,
+  "shooter_player_id": null,
+  "assist_player_id": null,
+  "offensive_rebound_player_id": null,
+  "defensive_rebound_player_id": null,
+  "block_player_id": null,
+  "shot_x": null,
+  "shot_y": null,
+  "shot_made": 0,
+  "date_of_entry": "2023-03-10T06:50:55.000Z",
+  "guid": null,
+  "deleted": 0
+}
+```
+

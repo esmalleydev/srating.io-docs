@@ -1,0 +1,143 @@
+## Get a player's game log
+
+This request returns the player boxscores for a season along with the game information.
+
+### Required arguments
+`player_id` and `season`
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/player/getGameLogs?player_id=dff6dce2-ad5a-11ed-9185-b6be2f39279c&season=2023
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'player',
+    'function': 'getGameLogs',
+    'arguments': {
+      'player_id': 'dff6dce2-ad5a-11ed-9185-b6be2f39279c',
+      'season': 2023,
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "08795093-ae54-11ed-9185-b6be2f39279c": {
+    "cbb_player_boxscore_id": "08795093-ae54-11ed-9185-b6be2f39279c",
+    "cbb_game_id": "96e971ae-8551-11ed-bf01-5296e1552828",
+    "team_id": "87019264-8549-11ed-bf01-5296e1552828",
+    "player_id": "dff6dce2-ad5a-11ed-9185-b6be2f39279c",
+    "season": 2023,
+    "first_name": "Zach",
+    "last_name": "Edey",
+    "position": "C",
+    "minutes_played": 33.27,
+    "field_goal": 8,
+    "field_goal_attempts": 16,
+    "field_goal_percentage": 50,
+    "two_point_field_goal": 8,
+    "two_point_field_goal_attempts": 16,
+    "two_point_field_goal_percentage": 50,
+    "three_point_field_goal": 0,
+    "three_point_field_goal_attempts": 0,
+    "three_point_field_goal_percentage": 0,
+    "free_throws": 2,
+    "free_throw_attempts": 2,
+    "free_throw_percentage": 100,
+    "offensive_rebounds": 2,
+    "defensive_rebounds": 6,
+    "total_rebounds": 8,
+    "assists": 0,
+    "steals": 0,
+    "blocks": 3,
+    "turnovers": 2,
+    "fouls": 2,
+    "points": 18,
+    "guid": "e692a4e0-c5f8-4af4-9231-e89a50d5eb2d",
+    "deleted": 0,
+    "cbb_game": {
+      "cbb_game_id": "96e971ae-8551-11ed-bf01-5296e1552828",
+      "season": "2023",
+      "away_team_id": "87019264-8549-11ed-bf01-5296e1552828",
+      "home_team_id": "802fd646-8549-11ed-bf01-5296e1552828",
+      "network": null,
+      "home_team_rating": null,
+      "away_team_rating": null,
+      "away_score": 53,
+      "home_score": 60,
+      "status": "final",
+      "current_period": "Final",
+      "clock": "0:00",
+      "start_date": "2023-02-16T05:00:00.000Z",
+      "start_datetime": "2023-02-17T04:30:00.000Z",
+      "start_timestamp": 1676590200,
+      "updated_at": "2023-02-17T11:19:34.000Z",
+      "attendance": 17950,
+      "neutral_site": 0,
+      "is_conf_game": 1,
+      "boxscore": 1,
+      "boxscore_error": 0,
+      "guid": null,
+      "deleted": 0,
+      "teams": {
+        "802fd646-8549-11ed-bf01-5296e1552828": {
+          "team_id": "802fd646-8549-11ed-bf01-5296e1552828",
+          "char6": "MD",
+          "code": "Maryland",
+          "name": "Maryland Terrapins",
+          "alt_name": "Maryland",
+          "primary_color": "#C8102E",
+          "secondary_color": null,
+          "cbb_d1": 1,
+          "cbb": 1,
+          "cfb": 1,
+          "nba": 0,
+          "nfl": 0,
+          "nhl": 0,
+          "guid": null,
+          "deleted": 0
+        },
+        "87019264-8549-11ed-bf01-5296e1552828": {
+          "team_id": "87019264-8549-11ed-bf01-5296e1552828",
+          "char6": "PURDUE",
+          "code": "Purdue",
+          "name": "Purdue Boilermakers",
+          "alt_name": "Purdue",
+          "primary_color": "#010101",
+          "secondary_color": null,
+          "cbb_d1": 1,
+          "cbb": 1,
+          "cfb": 1,
+          "nba": 0,
+          "nfl": 0,
+          "nhl": 0,
+          "guid": null,
+          "deleted": 0
+        }
+      }
+    }
+  },
+  ...
+}
+```
+

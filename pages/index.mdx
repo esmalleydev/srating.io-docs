@@ -1,15 +1,15 @@
-## Connect to our API in a few short steps
+## Connect to our API in a 3 steps
 
-### Get a free trial or paid API key
+### 1. Get a free trial or paid API key
 [View our plans here...](https://srating.io/pricing) all you need is an email address. The free trial is limited to 500 requests per month and some data maybe scrambled.
 
-### Required Headers
+### 2. Required Headers
 ```console
 X-API-KEY
 ```
 You must include your API key in the header under "X-API-KEY"
 
-### Send a request
+### 3. Send a request
 
 GET
 
@@ -28,7 +28,7 @@ fetch('https://api.srating.io/v1', {
   'body': JSON.stringify({
     'class': 'cbb_game',
     'function': 'getGames',
-    'arguments: {
+    'arguments': {
       'start_date': '2023-04-03',
     }
   }),

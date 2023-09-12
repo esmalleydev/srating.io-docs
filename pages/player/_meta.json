@@ -1,0 +1,5 @@
+{
+  "get": "get",
+  "getSeasons": "getSeasons",
+  "getGameLogs": "getGameLogs"
+}

@@ -1,13 +1,13 @@
-## Get a team row
+## Get a ranking row
 
-This request will find the first matching row and typically only used when passing in the `team_id` argument.
+This request will find the first matching row and typically only used when passing in the `cbb_ranking_id` or `team_id` and `season` argument.
 
 ### Request
 
 GET
 
 ```console
-https://api.srating.io/v1/team/get?team_id=87019264-8549-11ed-bf01-5296e1552828
+https://api.srating.io/v1/cbb_ranking/get?team_id=87019264-8549-11ed-bf01-5296e1552828&season=2023&current=1
 ```
 
 POST
@@ -19,10 +19,12 @@ fetch('https://api.srating.io/v1', {
     'X-API-KEY': 'YOUR_API_KEY',
   },
   'body': JSON.stringify({
-    'class': 'team',
+    'class': 'cbb_ranking',
     'function': 'get',
     'arguments': {
       'team_id': '87019264-8549-11ed-bf01-5296e1552828',
+      'season': 2023,
+      'current': 1,
     }
   }),
 }).then(response => {
@@ -38,19 +40,18 @@ fetch('https://api.srating.io/v1', {
 Response
 ```json
 {
+  "cbb_ranking_id": "faa69fe1-d29e-11ed-9185-b6be2f39279c",
+  "season": 2023,
   "team_id": "87019264-8549-11ed-bf01-5296e1552828",
-  "char6": "PURDUE",
-  "code": "Purdue",
-  "name": "Purdue Boilermakers",
-  "alt_name": "Purdue",
-  "primary_color": "#010101",
-  "secondary_color": null,
-  "cbb_d1": 1,
-  "cbb": 1,
-  "cfb": 1,
-  "nba": 0,
-  "nfl": 0,
-  "nhl": 0,
+  "composite_rank": 6,
+  "elo_rank": 17,
+  "kenpom_rank": 7,
+  "srs_rank": 11,
+  "ap_rank": 3,
+  "coaches_rank": 3,
+  "net_rank": 5,
+  "date_of_rank": "2023-04-04T04:00:00.000Z",
+  "current": 1,
   "guid": null,
   "deleted": 0
 }
