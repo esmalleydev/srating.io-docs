@@ -9,6 +9,14 @@ export default {
   },
   head: (
     <>
+      <meta name="theme-color" content="#000000" />
+      <meta
+        name="srating API Documentation"
+        content="Sports data API Documentation for college NCAA basketball"
+      />
+      <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
+      <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+      <title>sRating Docs</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta property="og:title" content="srating API Docs" />
       <meta property="og:description" content="srating API Documentation" />
