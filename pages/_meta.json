@@ -1,11 +1,6 @@
 {
   "index": "Get started",
   "headers": "Headers",
-  "srating": {
-    "title": "srating",
-    "type": "page",
-    "href": "https://srating.io/"
-  },
   "pricing": {
     "title": "Pricing",
     "type": "page",
