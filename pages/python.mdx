@@ -1,0 +1,62 @@
+## Using python
+
+Below are example get and post requests using python.
+
+### Request
+
+GET
+
+```python copy filename="python"
+import requests
+
+# Define the headers
+headers = {
+  "X-API-KEY": "YOUR_API_KEY"
+}
+
+# Define the URL you want to send the GET request to
+url = "https://api.srating.io/v1/cbb_game/getGames?start_date=2023-04-01"
+
+# Send the GET request with the headers
+response = requests.get(url, headers=headers)
+
+# Check the status code to ensure the request was successful (200 OK)
+if response.status_code == 200:
+  # Print the response content
+  print(response.text)
+else:
+  print(f"Request failed with status code: {response.status_code}")
+```
+
+POST
+
+```python copy filename="python"
+import requests
+
+# Define the headers
+headers = {
+  "X-API-KEY": "YOUR_API_KEY"
+}
+
+# Define the URL you want to send the POST request to
+url = "https://api.srating.io/v1/"
+
+# Define the data to be sent in the request body
+data = {
+  "class": "cbb_game",
+  "function": "getGames",
+  "arguments": {
+    "start_date": "2023-04-01"
+  }
+}
+
+# Send the POST request with the headers and data
+response = requests.post(url, headers=headers, json=data)
+
+# Check the status code to ensure the request was successful (200 OK)
+if response.status_code == 200:
+  # Print the response content
+  print(response.text)
+else:
+  print(f"Request failed with status code: {response.status_code}")
+```

@@ -17,5 +17,11 @@
   "cbb_player_boxscore": "Player boxscore",
   "cbb_game_pbp": "Play by play",
   "cbb_ranking": "Ranking",
-  "cbb_elo": "ELO"
+  "cbb_elo": "ELO",
+  "----": {
+    "type": "separator"
+  },
+  "python": "python",
+  "curl": "curl",
+  "rate_limiter": "Rate limiting"
 }
