@@ -14,4 +14,11 @@ To start developing run:
 
 This project is a API documentation for [srating.io](https://srating.io)
 
-Contribute to the open-source [srating.io GUI Github](https://github.com/esmalleydev/srating.io-gui) 
+Contribute to the open-source [srating.io GUI Github](https://github.com/esmalleydev/srating.io-gui)
+
+### Tips
+May need to clear out .next folder before rebuilding
+`rm -r .next`
+
+### pm2
+`pm2 start npm --name "docs" -- start`
