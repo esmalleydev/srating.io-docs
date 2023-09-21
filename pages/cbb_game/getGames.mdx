@@ -1,8 +1,19 @@
 ## Get games
+The getGames call will return the games along with odds, teams, ranking data.
 
-This will returns all games matching a specified argument, typically used with `start_date`.
+### Usage
+This will count as 20 usage tokens.
 
-This call will return more relevant data about the game, including the current odds and ranking data.
+The same data can be retrieved with other relevant get requests, but typically this request will be more efficent when there are more than 4 games in a day.
+
+### Required arguments
+Must specify a start_date or a season with a home/away_team_id
+
+`start_date` (YYYY-MM-DD)
+
+OR
+
+`season` AND (`home_team_id` OR `away_team_id`)
 
 ### Request
 

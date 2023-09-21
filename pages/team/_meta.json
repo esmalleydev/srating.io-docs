@@ -1,5 +1,6 @@
 {
   "get": "get",
   "getPlayers": "getPlayers",
-  "getStats": "getStats"
+  "getStats": "getStats",
+  "getConference": "getConference"
 }

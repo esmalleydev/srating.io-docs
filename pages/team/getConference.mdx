@@ -1,0 +1,52 @@
+## Team's conference
+Returns the conference for a team in a specified season.
+
+### Required arguments
+`team_id` and `season`
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/team/getConference?team_id=7860d20d-8549-11ed-bf01-5296e1552828&season=2023
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'team',
+    'function': 'getConference',
+    'arguments': {
+      'team_id': '7860d20d-8549-11ed-bf01-5296e1552828',
+      'season': 2023,
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "team_season_conference_id": "defc1715-c338-11ed-9185-b6be2f39279c",
+  "team_id": "7860d20d-8549-11ed-bf01-5296e1552828",
+  "season": 2023,
+  "conference": "C-USA",
+  "guid": "b23739a7-e0c5-4cdb-9763-69ef5abff4a4",
+  "deleted": 0
+}
+```
+
