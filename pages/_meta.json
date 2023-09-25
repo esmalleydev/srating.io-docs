@@ -1,6 +1,7 @@
 {
   "index": "Get started",
   "headers": "Headers",
+  "endpoint": "Endpoint",
   "tokens": "Usage tokens",
   "pricing": {
     "title": "Pricing",

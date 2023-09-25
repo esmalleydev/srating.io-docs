@@ -1,0 +1,24 @@
+## Endpoint / POST body
+
+The base endpoint is : `https://api.srating.io/v1/`
+
+### GET
+
+Base endpoint followed by:
+
+/`class`/`function`?`arguments`
+
+`https://api.srating.io/v1/cbb_game/getGames?start_date=2023-04-03`
+
+### POST
+
+The body will be an object
+```js
+{
+  'class': 'cbb_game',
+  'function': 'getGames',
+  'arguments': {
+    'start_date': '2023-04-03',
+  }
+}
+```
