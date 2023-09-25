@@ -1,5 +1,7 @@
 ![build](https://github.com/esmalleydev/srating.io-gui/actions/workflows/build.js.yml/badge.svg)
-![version](https://img.shields.io/github/package-json/v/esmalleydev/srating.io-gui)
+![status](https://img.shields.io/uptimerobot/status/m795359393-481ed5a22e5d58de53fdb32a)
+![uptime](https://img.shields.io/uptimerobot/ratio/7/m795359393-481ed5a22e5d58de53fdb32a)
+![version](https://img.shields.io/github/package-json/v/esmalleydev/srating.io-docs)
 # [docs.srating.io](https://docs.srating.io)
 
 This is the open-source GUI project for [docs.srating.io](https://docs.srating.io). This project uses [nextjs](https://nextjs.org/), [reactjs](https://reactjs.org/) and [nextra](https://nextra.site).
