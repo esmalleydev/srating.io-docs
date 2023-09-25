@@ -1,6 +1,4 @@
 ![build](https://github.com/esmalleydev/srating.io-gui/actions/workflows/build.js.yml/badge.svg)
-![status](https://img.shields.io/uptimerobot/status/m795359393-481ed5a22e5d58de53fdb32a)
-![uptime](https://img.shields.io/uptimerobot/ratio/7/m795359393-481ed5a22e5d58de53fdb32a)
 ![version](https://img.shields.io/github/package-json/v/esmalleydev/srating.io-docs)
 # [docs.srating.io](https://docs.srating.io)
 
