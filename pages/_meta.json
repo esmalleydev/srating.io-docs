@@ -11,9 +11,9 @@
   "---": {
     "type": "separator"
   },
+  "cbb_game": "Games / Scores",
   "team": "Team",
   "player": "Player",
-  "cbb_game": "Games / Scores",
   "cbb_game_odds": "Odds",
   "cbb_boxscore": "Boxscore",
   "cbb_player_boxscore": "Player boxscore",
