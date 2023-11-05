@@ -1,5 +1,11 @@
 ## Team statistics
-Returns statistics for a team in a specified season.
+Returns statistics for a team in a specified season. This is also a great way to look at historical data.
+
+If `current` = 1, this is the most recent ranking row for that team in the season.
+
+You can use the `date_of_rank` to order the rankings, there should be 1 row per day during the season.
+
+The stats are stored as averages based on the `games`. Each stat should have a corresponding rank out of all D1 teams, which also have a `date_of_rank` on the same date.
 
 ### Required arguments
 `team_id` and `season`
