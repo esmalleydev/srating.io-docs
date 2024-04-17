@@ -20,6 +20,7 @@
   "cbb_game_pbp": "Play by play",
   "cbb_ranking": "Ranking",
   "cbb_elo": "ELO",
+  "cbb_transfer_player_season": "Transfers",
   "----": {
     "type": "separator"
   },

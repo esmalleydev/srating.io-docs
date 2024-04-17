@@ -1,0 +1,31 @@
+The cbb_transfer_player_season table will contain transfer data for players for a specific season.
+
+Historical data may be incomplete, this data is in beta and may have increased inaccuracies.
+
+### Example row
+```json
+{
+  "cbb_transfer_player_season_id": "9faa2192-fa16-11ee-9686-72fab666226a",
+  "player_id": "c817c935-ad56-11ed-9185-b6be2f39279c",
+  "season": 2024,
+  "committed_team_id": "7c414343-8549-11ed-bf01-5296e1552828",
+  "committed": 1,
+  "guid": "8c2cd51d-9c4a-4014-8c21-70549c422e36",
+  "deleted": 0
+}
+```
+
+### Schema
+```console
++-------------------------------+--------------+
+| Field                         | Type         |
++-------------------------------+--------------+
+| cbb_transfer_player_season_id | char(36)     |
+| player_id                     | char(36)     |
+| season                        | int unsigned |
+| committed_team_id             | char(36)     |
+| committed                     | tinyint(1)   |
+| guid                          | char(36)     |
+| deleted                       | tinyint(1)   |
++-------------------------------+--------------+
+```

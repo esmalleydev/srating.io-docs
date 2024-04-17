@@ -1,0 +1,52 @@
+## Get a transfer row
+
+This request will find the first matching row and typically only used when passing in the `cbb_transfer_player_season_id` or `player_id` and `season` argument.
+
+For example, you might [get Players on a team](/team/getPlayers) then get the transfer data for a player.
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/cbb_transfer_player_season/get?player_id=c817c935-ad56-11ed-9185-b6be2f39279c&season=2024
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'cbb_transfer_player_season',
+    'function': 'get',
+    'arguments': {
+      'player_id': 'c817c935-ad56-11ed-9185-b6be2f39279c',
+      'season': 2024,
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "cbb_transfer_player_season_id": "9faa2192-fa16-11ee-9686-72fab666226a",
+  "player_id": "c817c935-ad56-11ed-9185-b6be2f39279c",
+  "season": 2024,
+  "committed_team_id": "7c414343-8549-11ed-bf01-5296e1552828",
+  "committed": 1,
+  "guid": "8c2cd51d-9c4a-4014-8c21-70549c422e36",
+  "deleted": 0
+}
+```
