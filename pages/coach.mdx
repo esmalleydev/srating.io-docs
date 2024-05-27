@@ -1,0 +1,35 @@
+The coach table will contain coach information
+
+### Example row
+```json
+{
+  "coach_id": "cf3f6a9d-0fe0-11ef-9686-72fab666226a",
+  "first_name": "Matt",
+  "last_name": "Painter",
+  "cbb": 1,
+  "cfb": 0,
+  "nba": 0,
+  "nfl": 0,
+  "nhl": 0,
+  "guid": "0e8f0ea6-0042-43b5-85c0-72ea08875219",
+  "deleted": 0
+}
+```
+
+### Schema
+```console
++-------------------------+--------------+
+| Field                   | Type         |
++-------------------------+--------------+
+| coach_id                | char(36)     |
+| first_name              | varchar(255) |
+| last_name               | varchar(255) |
+| guid                    | char(36)     |
+| cbb                     | tinyint(1)   |
+| cfb                     | tinyint(1)   |
+| nba                     | tinyint(1)   |
+| nfl                     | tinyint(1)   |
+| nhl                     | tinyint(1)   |
+| deleted                 | tinyint(1)   |
++-------------------------+--------------+
+```

@@ -1,0 +1,27 @@
+The conference table will contain conference information
+
+### Example row
+```json
+{
+  "conference_id": "aaa5086f-1095-11ef-9686-72fab666226a",
+  "code": "BIG TEN",
+  "name": "Big Ten",
+  "guid": "67adcaa6-e0f9-4a24-a77b-17806340a129",
+  "inactive": 0,
+  "deleted": 0
+}
+```
+
+### Schema
+```console
++---------------+--------------+
+| Field         | Type         |
++---------------+--------------+
+| conference_id | char(36)     |
+| code          | varchar(255) |
+| name          | varchar(255) |
+| guid          | char(36)     |
+| inactive      | tinyint(1)   |
+| deleted       | tinyint(1)   |
++---------------+--------------+
+```

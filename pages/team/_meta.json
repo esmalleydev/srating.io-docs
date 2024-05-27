@@ -2,5 +2,6 @@
   "get": "get",
   "getPlayers": "getPlayers",
   "getStats": "getStats",
-  "getConference": "getConference"
+  "getConference": "getConference",
+  "getCoach": "getCoach"
 }

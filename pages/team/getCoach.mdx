@@ -1,5 +1,5 @@
-## Team's conference
-Returns the conference for a team in a specified season.
+## Team's coach
+Returns the coach for a team in a specified season.
 
 ### Required arguments
 `team_id` and `season`
@@ -9,7 +9,7 @@ Returns the conference for a team in a specified season.
 GET
 
 ```console
-https://api.srating.io/v1/team/getConference?team_id=7860d20d-8549-11ed-bf01-5296e1552828&season=2023
+https://api.srating.io/v1/team/getCoach?team_id=7860d20d-8549-11ed-bf01-5296e1552828&season=2023
 ```
 
 POST
@@ -22,7 +22,7 @@ fetch('https://api.srating.io/v1', {
   },
   'body': JSON.stringify({
     'class': 'team',
-    'function': 'getConference',
+    'function': 'getCoach',
     'arguments': {
       'team_id': '7860d20d-8549-11ed-bf01-5296e1552828',
       'season': 2023,
@@ -41,12 +41,16 @@ fetch('https://api.srating.io/v1', {
 Response
 ```json
 {
-  "conference_id": "ab24d906-1095-11ef-9686-72fab666226a",
-  "code": "CUSA",
-  "name": "USA",
-  "guid": "4c1dfc0f-da3a-4aae-a99a-ec12f878f270",
-  "inactive": 0,
+  "coach_id": "b9905c1c-0fa4-11ef-9686-72fab666226a",
+  "first_name": "Dusty",
+  "last_name": "May",
+  "guid": "69a53ffc-0b68-45d0-88e0-9f2cca86b644",
+  "cbb": 1,
+  "cfb": 0,
+  "nba": 0,
+  "nfl": 0,
+  "nhl": 0,
   "deleted": 0
-}
+  }
 ```
 

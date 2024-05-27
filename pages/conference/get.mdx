@@ -1,0 +1,51 @@
+## Get a conference row
+
+This request will find the first matching row and typically only used when passing in the `conference_id` argument.
+
+Looking for the conference of a team in a specific season? [Go here.](/team/getConference)
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/conference/get?conference_id=aaa5086f-1095-11ef-9686-72fab666226a
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'conference',
+    'function': 'get',
+    'arguments': {
+      'conference_id': 'aaa5086f-1095-11ef-9686-72fab666226a',
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "conference_id": "aaa5086f-1095-11ef-9686-72fab666226a",
+  "code": "BIG TEN",
+  "name": "Big Ten",
+  "guid": "67adcaa6-e0f9-4a24-a77b-17806340a129",
+  "inactive": 0,
+  "deleted": 0
+}
+```
+

@@ -14,6 +14,7 @@
   "cbb_game": "Games / Scores",
   "team": "Team",
   "player": "Player",
+  "coach": "Coach",
   "cbb_game_odds": "Odds",
   "cbb_boxscore": "Boxscore",
   "cbb_player_boxscore": "Player boxscore",
@@ -21,6 +22,7 @@
   "cbb_ranking": "Ranking",
   "cbb_elo": "ELO",
   "cbb_transfer_player_season": "Transfers",
+  "conference": "Conference",
   "----": {
     "type": "separator"
   },

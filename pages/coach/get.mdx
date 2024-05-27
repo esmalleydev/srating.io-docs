@@ -1,0 +1,55 @@
+## Get a coach row
+
+This request will find the first matching row and typically only used when passing in the `coach_id` argument.
+
+Looking for the coach of a team in a specific season? [Go here.](/team/getCoach)
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/coach/get?coach_id=cf3f6a9d-0fe0-11ef-9686-72fab666226a
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'coach',
+    'function': 'get',
+    'arguments': {
+      'coach_id': 'cf3f6a9d-0fe0-11ef-9686-72fab666226a',
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "coach_id": "cf3f6a9d-0fe0-11ef-9686-72fab666226a",
+  "first_name": "Matt",
+  "last_name": "Painter",
+  "cbb": 1,
+  "cfb": 0,
+  "nba": 0,
+  "nfl": 0,
+  "nhl": 0,
+  "guid": "0e8f0ea6-0042-43b5-85c0-72ea08875219",
+  "deleted": 0
+}
+```
+
