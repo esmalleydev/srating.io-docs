@@ -2,14 +2,14 @@
 Returns the coach for a team in a specified season.
 
 ### Required arguments
-`team_id` and `season`
+`organization_id` , `team_id` and `season`
 
 ### Request
 
 GET
 
 ```console
-https://api.srating.io/v1/team/getCoach?team_id=7860d20d-8549-11ed-bf01-5296e1552828&season=2023
+https://api.srating.io/v1/team/getCoach?team_id=7860d20d-8549-11ed-bf01-5296e1552828&season=2023&organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8
 ```
 
 POST
@@ -24,6 +24,7 @@ fetch('https://api.srating.io/v1', {
     'class': 'team',
     'function': 'getCoach',
     'arguments': {
+      'organization_id': 'f1c37c98-3b4c-11ef-94bc-2a93761010b8',
       'team_id': '7860d20d-8549-11ed-bf01-5296e1552828',
       'season': 2023,
     }
@@ -45,12 +46,7 @@ Response
   "first_name": "Dusty",
   "last_name": "May",
   "guid": "69a53ffc-0b68-45d0-88e0-9f2cca86b644",
-  "cbb": 1,
-  "cfb": 0,
-  "nba": 0,
-  "nfl": 0,
-  "nhl": 0,
   "deleted": 0
-  }
+}
 ```
 

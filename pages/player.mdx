@@ -1,5 +1,9 @@
 The player table will contain player information
 
+[Get player game log](/player/getGameLogs)
+
+[Get player seasons and teams](/player/getSeasons)
+
 ### Example row
 ```json
 {
@@ -14,22 +18,4 @@ The player table will contain player information
   "guid": null,
   "deleted": 0
 }
-```
-
-### Schema
-```console
-+-------------------------+--------------+
-| Field                   | Type         |
-+-------------------------+--------------+
-| player_id               | char(36)     |
-| first_name              | varchar(255) |
-| last_name               | varchar(255) |
-| position                | varchar(20)  |
-| height                  | varchar(20)  |
-| weight                  | varchar(20)  |
-| number                  | varchar(3)   |
-| hometown                | varchar(255) |
-| guid                    | char(36)     |
-| deleted                 | tinyint(1)   |
-+-------------------------+--------------+
 ```

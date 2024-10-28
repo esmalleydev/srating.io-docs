@@ -1,0 +1,35 @@
+The game table will contain game information like the teams, score, status, start date etc.
+
+You can `get` each row manually but the best way would be to utilize the [getGames](/game/getGames) call, which will include additional information like odds, teams, etc.
+
+### Example row
+```json
+{
+  "game_id": "40fd1ac3-5dd9-11ef-9222-9667e47de71a",
+  "organization_id": "f1c37c98-3b4c-11ef-94bc-2a93761010b8",
+  "division_id": "bf602dc4-3b4a-11ef-94bc-2a93761010b8",
+  "season": 2023,
+  "away_team_id": "885557ec-8549-11ed-bf01-5296e1552828",
+  "home_team_id": "75a9cb12-8549-11ed-bf01-5296e1552828",
+  "network": "CBS",
+  "away_score": 67,
+  "home_score": 69,
+  "status": "final",
+  "current_period": "Final",
+  "clock": "0:00",
+  "clock_last_updated_at": "2024-10-18T15:43:45.000Z",
+  "start_date": "2023-04-03T00:00:00.000Z",
+  "start_datetime": "2023-04-03T21:20:00.000Z",
+  "start_timestamp": 1680571200,
+  "updated_at": "2023-04-03T23:38:01.000Z",
+  "attendance": 72423,
+  "neutral_site": 1,
+  "is_conf_game": 0,
+  "boxscore": 1,
+  "guid": "0343dc2d-1021-43cd-956a-6aef5b9ed2d4",
+  "deleted": 0,
+}
+```
+
+Currently game data is available beginning from the 1950 season to now. Boxscore data is available starting from the 2011 season.
+

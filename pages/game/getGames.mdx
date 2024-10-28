@@ -1,28 +1,26 @@
-## Connect to our API in a 3 steps
-Use our API to get [live scores](/game/getGames), [live odds](/game/getOdds), [statistics](/team/getStats), [teams](/team/get), [ranking](/ranking/get) and more!
+## Get games
+The getGames call will return the games along with [odds](/odds/get), [teams](/team/get) data.
 
+### Usage
+This will count as 40 usage tokens.
 
-### 1. Get a free trial or paid API key
-[View our plans here...](https://srating.io/pricing) all you need is an email address. The free trial is limited to 500 requests per month and some data may be scrambled.
+The same data can be retrieved with other relevant get requests, but typically this request will be more efficent when there are more than 4 games in a day.
 
-### 2. Required Headers
-```console
-X-API-KEY
-```
-You must include your API key in the header under "X-API-KEY"
+### Required arguments
+Must specify a start_date or a season with a home/away_team_id
 
-### 3. Specify the sport and division
+`start_date` (YYYY-MM-DD)
 
-Most requests will require a sport (organization_id) and division. For example games for college basketball and football are stored in the same table. [Read more here](/sports)
+OR
 
-### 4. Send a request
+`season` AND (`home_team_id` OR `away_team_id`)
 
-[Using python? Click here](/python)
+### Request
 
 GET
 
 ```console
-https://api.srating.io/v1/game/getGames?start_date=2023-04-03&organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8&division_id=bf602dc4-3b4a-11ef-94bc-2a93761010b8
+https://api.srating.io/v1/game/getGames?start_date=2023-04-03
 ```
 
 POST
@@ -37,8 +35,6 @@ fetch('https://api.srating.io/v1', {
     'class': 'game',
     'function': 'getGames',
     'arguments': {
-      'organization_id': 'f1c37c98-3b4c-11ef-94bc-2a93761010b8',
-      'division_id': 'bf602dc4-3b4a-11ef-94bc-2a93761010b8',
       'start_date': '2023-04-03',
     }
   }),
@@ -140,3 +136,4 @@ Response
   }
 }
 ```
+

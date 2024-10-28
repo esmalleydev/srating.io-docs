@@ -1,5 +1,13 @@
 The team table will contain team information
 
+[Get the coach of a team](/team/getCoach)
+
+[Get the conference of a team](/team/getConference)
+
+[Get the players on a team](/team/getPlayers)
+
+[Get the stats of a team](/team/getStats)
+
 ### Example row
 ```json
 {
@@ -10,36 +18,7 @@ The team table will contain team information
   "alt_name": "Purdue",
   "primary_color": "#010101",
   "secondary_color": null,
-  "cbb_d1": 1,
-  "cbb": 1,
-  "cfb": 1,
-  "nba": 0,
-  "nfl": 0,
-  "nhl": 0,
   "guid": null,
   "deleted": 0
 }
-```
-
-### Schema
-```console
-+---------------------+--------------+
-| Field               | Type         |
-+---------------------+--------------+
-| team_id             | char(36)     |
-| char6               | varchar(255) |
-| code                | varchar(255) |
-| name                | varchar(255) |
-| alt_name            | varchar(255) |
-| primary_color       | varchar(10)  |
-| secondary_color     | varchar(10)  |
-| cbb_d1              | tinyint(1)   |
-| cbb                 | tinyint(1)   |
-| cfb                 | tinyint(1)   |
-| nba                 | tinyint(1)   |
-| nfl                 | tinyint(1)   |
-| nhl                 | tinyint(1)   |
-| guid                | char(36)     |
-| deleted             | tinyint(1)   |
-+---------------------+--------------+
 ```

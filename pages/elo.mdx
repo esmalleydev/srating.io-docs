@@ -1,0 +1,23 @@
+The `elo` table will contain elo data for every team in the season. ELO is ran after a game is finalized.
+
+You can use `current` to find the most recent calculated ELO for a team in a season.
+
+The `game_id` column is used to track the last game which the ELO was calculated.
+
+### Example row
+```json
+{
+  "elo_id": "0146c60a-6257-11ef-9222-9667e47de71a",
+  "organization_id": "f1c37c98-3b4c-11ef-94bc-2a93761010b8",
+  "division_id": "bf602dc4-3b4a-11ef-94bc-2a93761010b8",
+  "team_id": "87019264-8549-11ed-bf01-5296e1552828",
+  "game_id": "0f0fb2e7-5dd9-11ef-9222-9667e47de71a",
+  "season": 2023,
+  "elo": 1732,
+  "current": 0,
+  "date_of_entry": "2023-01-20T02:08:34.000Z",
+  "updated_at": "2023-01-20T02:08:34.000Z",
+  "guid": "dff7914a-59de-4b8f-92f2-1132eae2761e",
+  "deleted": 0,
+}
+```

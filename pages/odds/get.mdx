@@ -1,0 +1,56 @@
+## Get an odds row
+
+This request will find the first matching row and typically only used when passing in the `odds_id` argument.
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/odds/get?odds_id=209de407-5f70-11ef-9222-9667e47de71a
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'odds',
+    'function': 'get',
+    'arguments': {
+      'odds_id': '209de407-5f70-11ef-9222-9667e47de71a',
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "odds_id": "209de407-5f70-11ef-9222-9667e47de71a",
+  "game_id": "40fd1ac3-5dd9-11ef-9222-9667e47de71a",
+  "money_line_away": 828,
+  "money_line_home": -3453,
+  "spread_away": 13,
+  "spread_home": -11,
+  "over": 129.5,
+  "under": 145.5,
+  "date_of_entry": "2023-04-03T08:00:00.000Z",
+  "live": 1,
+  "current": 1,
+  "guid": "d9db673c-ce69-4581-a1ec-a36ec273c6eb",
+  "deleted": 0,
+}
+```
+

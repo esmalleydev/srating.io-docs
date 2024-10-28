@@ -1,21 +1,19 @@
 ## Team statistics
-Returns statistics for a team in a specified season. This is also a great way to look at historical data.
-
-If `current` = 1, this is the most recent ranking row for that team in the season.
+Returns the current statistics for a team in a specified season.
 
 You can use the `date_of_rank` to order the rankings, there should be 1 row per day during the season.
 
-The stats are stored as averages based on the `games`. Each stat should have a corresponding rank out of all D1 teams, which also have a `date_of_rank` on the same date.
+The stats are stored as averages based on the `games`. Each stat should have a corresponding rank out of all teams in same division, which also have a `date_of_rank` on the same date.
 
 ### Required arguments
-`team_id` and `season`
+`organization_id`, `division_id`, `team_id` and `season`
 
 ### Request
 
 GET
 
 ```console
-https://api.srating.io/v1/team/getStats?team_id=87019264-8549-11ed-bf01-5296e1552828&season=2023
+https://api.srating.io/v1/team/getStats?team_id=87019264-8549-11ed-bf01-5296e1552828&season=2023&organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8&division_id=bf602dc4-3b4a-11ef-94bc-2a93761010b8
 ```
 
 POST
@@ -30,6 +28,8 @@ fetch('https://api.srating.io/v1', {
     'class': 'team',
     'function': 'getStats',
     'arguments': {
+      'organization_id': 'f1c37c98-3b4c-11ef-94bc-2a93761010b8',
+      'division_id': 'bf602dc4-3b4a-11ef-94bc-2a93761010b8',
       'team_id': '87019264-8549-11ed-bf01-5296e1552828',
       'season': 2023,
     }
@@ -47,7 +47,7 @@ fetch('https://api.srating.io/v1', {
 Response
 ```json
 {
-  "cbb_statistic_ranking_id": "53fb68bb-e9e2-11ed-9185-b6be2f39279c",
+  "statistic_ranking_id": "53fb68bb-e9e2-11ed-9185-b6be2f39279c",
   "season": 2023,
   "team_id": "87019264-8549-11ed-bf01-5296e1552828",
   "total_games": 35,

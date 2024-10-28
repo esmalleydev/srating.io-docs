@@ -8,16 +8,18 @@ Base endpoint followed by:
 
 /`class`/`function`?`arguments`
 
-`https://api.srating.io/v1/cbb_game/getGames?start_date=2023-04-03`
+`https://api.srating.io/v1/game/getGames?start_date=2023-04-03&organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8&division_id=bf602dc4-3b4a-11ef-94bc-2a93761010b8`
 
 ### POST
 
 The body will be an object
 ```js
 {
-  'class': 'cbb_game',
+  'class': 'game',
   'function': 'getGames',
   'arguments': {
+    'organization_id': 'f1c37c98-3b4c-11ef-94bc-2a93761010b8',
+    'division_id': 'bf602dc4-3b4a-11ef-94bc-2a93761010b8',
     'start_date': '2023-04-03',
   }
 }

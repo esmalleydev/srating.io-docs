@@ -2,14 +2,14 @@
 Returns the conference for a team in a specified season.
 
 ### Required arguments
-`team_id` and `season`
+`organization_id` , `team_id` and `season`
 
 ### Request
 
 GET
 
 ```console
-https://api.srating.io/v1/team/getConference?team_id=7860d20d-8549-11ed-bf01-5296e1552828&season=2023
+https://api.srating.io/v1/team/getConference?team_id=7860d20d-8549-11ed-bf01-5296e1552828&season=2023&organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8
 ```
 
 POST
@@ -24,6 +24,7 @@ fetch('https://api.srating.io/v1', {
     'class': 'team',
     'function': 'getConference',
     'arguments': {
+      'organization_id': 'f1c37c98-3b4c-11ef-94bc-2a93761010b8',
       'team_id': '7860d20d-8549-11ed-bf01-5296e1552828',
       'season': 2023,
     }

@@ -1,0 +1,57 @@
+## Get an ELO row
+
+This request will find the first matching row and typically only used when passing in the `elo_id` or `organization_id`, `team_id` and `season` argument.
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/elo/get?organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8&team_id=87019264-8549-11ed-bf01-5296e1552828&season=2023&current=1
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'elo',
+    'function': 'get',
+    'arguments': {
+      'organization_id': 'f1c37c98-3b4c-11ef-94bc-2a93761010b8',
+      'team_id': '87019264-8549-11ed-bf01-5296e1552828',
+      'season': 2023,
+      'current': 1,
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "elo_id": "0146c60a-6257-11ef-9222-9667e47de71a",
+  "organization_id": "f1c37c98-3b4c-11ef-94bc-2a93761010b8",
+  "division_id": "bf602dc4-3b4a-11ef-94bc-2a93761010b8",
+  "team_id": "87019264-8549-11ed-bf01-5296e1552828",
+  "game_id": "0f0fb2e7-5dd9-11ef-9222-9667e47de71a",
+  "season": 2023,
+  "elo": 1732,
+  "current": 0,
+  "date_of_entry": "2023-01-20T02:08:34.000Z",
+  "updated_at": "2023-01-20T02:08:34.000Z",
+  "guid": "dff7914a-59de-4b8f-92f2-1132eae2761e",
+  "deleted": 0,
+}
+```

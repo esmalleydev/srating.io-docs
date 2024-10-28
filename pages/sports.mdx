@@ -1,0 +1,61 @@
+All sports share the same tables, for most requests, you will need to specify a `organization_id` and `division_id`.
+
+The `organization_id` is the sport, like NCAA mens basketball or football.
+
+The `division_id` is the division, like D1 or FBS.
+
+You can send a `read` request to get all the active rows in each table
+
+GET
+
+```console
+https://api.srating.io/v1/organization/read?inactive=0
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'organization',
+    'function': 'read',
+    'arguments': {
+      'inactive': '0',
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+### Example row
+```json
+{
+    "f1c37c98-3b4c-11ef-94bc-2a93761010b8": {
+        "organization_id": "f1c37c98-3b4c-11ef-94bc-2a93761010b8",
+        "code": "NCAAM",
+        "name": "NCAA Men's basketball",
+        "guid": "8449abfd-2718-4e77-bc0a-9b24cad38107",
+        "inactive": 0,
+        "deleted": 0
+    },
+    "f1dedce6-3b4c-11ef-94bc-2a93761010b8": {
+        "organization_id": "f1dedce6-3b4c-11ef-94bc-2a93761010b8",
+        "code": "CFB",
+        "name": "College Football",
+        "guid": "471df035-ddfc-465b-9dfe-b1ab0a058439",
+        "inactive": 0,
+        "deleted": 0
+    }
+}
+```
+

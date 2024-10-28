@@ -1,0 +1,125 @@
+## Get a boxscore row
+
+This request will get the boxscore for a sport, the results will different based on the sport.
+
+You will typically pass in `organization_id`, `game_id` and `team_id`.
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/boxscore/get?organization_id=f1dedce6-3b4c-11ef-94bc-2a93761010b8&game_id=91897046-68e4-11ef-9222-9667e47de71a&team_id=75a9cb12-8549-11ed-bf01-5296e1552828
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'boxscore',
+    'function': 'get',
+    'arguments': {
+      'organization_id': 'f1dedce6-3b4c-11ef-94bc-2a93761010b8',
+      'game_id': '91897046-68e4-11ef-9222-9667e47de71a',
+      'team_id': '75a9cb12-8549-11ed-bf01-5296e1552828',
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "boxscore_id": "13b33a79-68e5-11ef-9222-9667e47de71a",
+  "organization_id": "f1dedce6-3b4c-11ef-94bc-2a93761010b8",
+  "division_id": "bf258a3f-3b4a-11ef-94bc-2a93761010b8",
+  "game_id": "91897046-68e4-11ef-9222-9667e47de71a",
+  "team_id": "75a9cb12-8549-11ed-bf01-5296e1552828",
+  "season": 2024,
+  "sport_boxscore_id": "13b21c0e-68e5-11ef-9222-9667e47de71a",
+  "guid": "178818ae-2193-423c-a389-1c50fc9dc876",
+  "final": 1,
+  "deleted": 0,
+  "football_boxscore_id": "13b21c0e-68e5-11ef-9222-9667e47de71a",
+  "minutes_played": null,
+  "points": 38,
+  "successful_pass_plays": null,
+  "successful_rush_plays": null,
+  "first_downs": null,
+  "third_down_conversions": null,
+  "third_down_attempts": null,
+  "fourth_down_conversions": null,
+  "fourth_down_attempts": null,
+  "penalties": null,
+  "penalty_yards": null,
+  "time_of_possession_seconds": null,
+  "passing_attempts": 19,
+  "passing_completions": 15,
+  "passing_yards": 215,
+  "passing_completion_percentage": 78.95,
+  "passing_yards_per_attempt": 11.32,
+  "passing_yards_per_completion": 14.33,
+  "passing_touchdowns": 2,
+  "passing_interceptions": 0,
+  "passing_rating_pro": 148.9,
+  "passing_rating_college": 208.74,
+  "passing_long": 59,
+  "rushing_attempts": 28,
+  "rushing_yards": 106,
+  "rushing_yards_gained": 108,
+  "rushing_yards_lost": 2,
+  "rushing_yards_per_attempt": 3.79,
+  "rushing_touchdowns": 2,
+  "rushing_long": 20,
+  "receptions": 15,
+  "receiving_yards": 215,
+  "receiving_yards_per_reception": 14.33,
+  "receiving_touchdowns": 2,
+  "receiving_long": 59,
+  "punt_returns": null,
+  "punt_return_yards": null,
+  "punt_return_yards_per_attempt": null,
+  "punt_return_touchdowns": null,
+  "punt_return_long": null,
+  "kick_returns": null,
+  "kick_return_yards": null,
+  "kick_return_yards_per_attempt": null,
+  "kick_return_touchdowns": null,
+  "kick_return_long": null,
+  "punts": null,
+  "punt_yards": null,
+  "punt_average": null,
+  "punt_long": null,
+  "field_goals_attempted": null,
+  "field_goals_made": null,
+  "field_goal_percentage": null,
+  "field_goals_longest_made": null,
+  "extra_points_attempted": null,
+  "extra_points_made": null,
+  "interceptions": null,
+  "interception_return_yards": null,
+  "interception_return_touchdowns": null,
+  "solo_tackles": null,
+  "assisted_tackles": null,
+  "tackles_for_loss": null,
+  "sacks": null,
+  "passes_defended": null,
+  "fumbles_recovered": null,
+  "fumble_return_touchdowns": null,
+  "quarterback_hurries": null,
+  "fumbles": null,
+  "fumbles_lost": null
+}
+```
