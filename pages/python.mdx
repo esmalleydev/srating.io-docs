@@ -15,7 +15,7 @@ headers = {
 }
 
 # Define the URL you want to send the GET request to
-url = "https://api.srating.io/v1/cbb_game/getGames?start_date=2023-04-01&organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8&division_id=bf602dc4-3b4a-11ef-94bc-2a93761010b8"
+url = "https://api.srating.io/v1/game/getGames?start_date=2023-04-01&organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8&division_id=bf602dc4-3b4a-11ef-94bc-2a93761010b8"
 
 # Send the GET request with the headers
 response = requests.get(url, headers=headers)
@@ -43,7 +43,7 @@ url = "https://api.srating.io/v1/"
 
 # Define the data to be sent in the request body
 data = {
-  "class": "cbb_game",
+  "class": "game",
   "function": "getGames",
   "arguments": {
     "organization_id": "f1c37c98-3b4c-11ef-94bc-2a93761010b8",
