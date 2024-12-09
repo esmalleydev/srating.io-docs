@@ -6,7 +6,7 @@
   "pricing": {
     "title": "Pricing",
     "type": "page",
-    "href": "https://srating.io/pricing"
+    "href": "https://srating.io/pricing?view=api"
   },
   "---": {
     "type": "separator"
@@ -19,7 +19,7 @@
   "odds": "Odds",
   "boxscore": "Boxscore",
   "player_boxscore": "Player boxscore",
-  "elo": "ELO",
+  "elo": "Elo",
   "cbb_transfer_player_season": "Transfers",
   "conference": "Conference",
   "----": {
