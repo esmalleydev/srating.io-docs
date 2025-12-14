@@ -6,6 +6,7 @@ The `division_id` is the division, like D1 or FBS.
 
 You can send a `read` request to get all the active rows in each table
 
+### Organization request
 GET
 
 ```console
@@ -37,7 +38,7 @@ fetch('https://api.srating.io/v1', {
 });
 ```
 
-### Example row
+#### Example response
 ```json
 {
   "f1c37c98-3b4c-11ef-94bc-2a93761010b8": {
@@ -56,6 +57,69 @@ fetch('https://api.srating.io/v1', {
     "inactive": 0,
     "deleted": 0
   }
+}
+```
+
+
+### Division request
+GET
+
+```console
+https://api.srating.io/v1/division/read?inactive=0
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'afd99647-c686-11f0-bc34-529c3ffdbb93',
+  },
+  'body': JSON.stringify({
+    'class': 'division',
+    'function': 'read',
+    'arguments': {
+      'inactive': '0',
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+#### Example response
+```json
+{
+  "bf258a3f-3b4a-11ef-94bc-2a93761010b8": {
+    "division_id":"bf258a3f-3b4a-11ef-94bc-2a93761010b8",
+    "code":"FBS",
+    "name":"FBS",
+    "guid":"f3cbcc18-d21a-4931-90c5-4c608cfbaac7",
+    "inactive":0,
+    "deleted":0
+  },
+  "bf4a4dac-3b4a-11ef-94bc-2a93761010b8": {
+    "division_id":"bf4a4dac-3b4a-11ef-94bc-2a93761010b8",
+    "code":"FCS",
+    "name":"FCS",
+    "guid":"39a84870-1736-4c04-97b7-91a6c73ca7fc",
+    "inactive":0,
+    "deleted":0
+  },
+  "bf602dc4-3b4a-11ef-94bc-2a93761010b8": {
+    "division_id":"bf602dc4-3b4a-11ef-94bc-2a93761010b8",
+    "code":"D1",
+    "name":"D1",
+    "guid":"e897e8a0-0fd4-4001-8bee-d6eddbb009b6",
+    "inactive":0,
+    "deleted":0
+  },
 }
 ```
 
