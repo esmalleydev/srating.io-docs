@@ -1,4 +1,4 @@
-![build](https://github.com/esmalleydev/srating.io-gui/actions/workflows/build.js.yml/badge.svg)
+![build](https://github.com/esmalleydev/srating.io-docs/actions/workflows/build.js.yml/badge.svg)
 ![version](https://img.shields.io/github/package-json/v/esmalleydev/srating.io-docs)
 # [docs.srating.io](https://docs.srating.io)
 

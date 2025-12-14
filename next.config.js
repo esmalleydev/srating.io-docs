@@ -1,11 +1,15 @@
+import nextra from 'nextra';
 
+const withNextra = nextra({
+  // nextra: {
+  //   theme: 'nextra-theme-docs',
+  //   themeConfig: './theme.config.jsx',
+  // },
+  // rootDir: './pages',
+  // contentDirBasePath: '/pages',
+});
 
-const withNextra = require('nextra')({
-  theme: 'nextra-theme-docs',
-  themeConfig: './theme.config.jsx'
-})
- 
-module.exports = withNextra();
-
-
+export default withNextra({
+  reactStrictMode: true,
+});
 
