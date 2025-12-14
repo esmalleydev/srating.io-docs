@@ -7,7 +7,7 @@ This will count as 40 usage tokens.
 The same data can be retrieved with other relevant get requests, but typically this request will be more efficent when there are more than 4 games in a day.
 
 ### Required arguments
-Must specify a start_date or a season with a home/away_team_id
+Must specify a organization_id, division_id and (start_date or a season with a home/away_team_id)
 
 `start_date` (YYYY-MM-DD)
 
@@ -20,7 +20,7 @@ OR
 GET
 
 ```console
-https://api.srating.io/v1/game/getGames?start_date=2023-04-03
+https://api.srating.io/v1/game/getGames?start_date=2023-04-03&organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8&division_id=bf602dc4-3b4a-11ef-94bc-2a93761010b8
 ```
 
 POST
@@ -36,6 +36,8 @@ fetch('https://api.srating.io/v1', {
     'function': 'getGames',
     'arguments': {
       'start_date': '2023-04-03',
+      'organization_id': 'f1c37c98-3b4c-11ef-94bc-2a93761010b8',
+      'division_id': 'bf602dc4-3b4a-11ef-94bc-2a93761010b8',
     }
   }),
 }).then(response => {

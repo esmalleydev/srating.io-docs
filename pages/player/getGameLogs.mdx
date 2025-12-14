@@ -8,14 +8,14 @@ This will count as 15 usage tokens.
 The same data can be retrieved with other relevant get requests, but typically this request will be more efficent.
 
 ### Required arguments
-`player_id` and `season`
+`organization_id`, `division_id`, `player_id`, `season`
 
 ### Request
 
 GET
 
 ```console
-https://api.srating.io/v1/player/getGameLogs?player_id=dff6dce2-ad5a-11ed-9185-b6be2f39279c&season=2023
+https://api.srating.io/v1/player/getGameLogs?organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8&division_id=bf602dc4-3b4a-11ef-94bc-2a93761010b8&player_id=dff6dce2-ad5a-11ed-9185-b6be2f39279c&season=2023
 ```
 
 POST
@@ -30,6 +30,8 @@ fetch('https://api.srating.io/v1', {
     'class': 'player',
     'function': 'getGameLogs',
     'arguments': {
+      'organization_id': 'f1c37c98-3b4c-11ef-94bc-2a93761010b8',
+      'division_id': 'bf602dc4-3b4a-11ef-94bc-2a93761010b8',
       'player_id': 'dff6dce2-ad5a-11ed-9185-b6be2f39279c',
       'season': 2023,
     }
