@@ -7,6 +7,7 @@ const withNextra = nextra({
   // },
   // rootDir: './pages',
   // contentDirBasePath: '/pages',
+  defaultShowCopyCode: true,
 });
 
 export default withNextra({

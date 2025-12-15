@@ -1,22 +1,29 @@
-import { Layout, useThemeConfig } from 'nextra-theme-docs';
+import { Footer, Layout, Navbar } from 'nextra-theme-docs'
+// import { Banner, Head } from 'nextra/components'
+
+// @ts-expect-error
 import { getPageMap } from 'nextra/page-map';
+// @ts-expect-error
+import 'nextra-theme-docs/style.css';
  
 export const metadata = {
   // Define your metadata here
   // For more information on metadata API, see: https://nextjs.org/docs/app/building-your-application/optimizing/metadata
 }
  
-// const banner = <Banner storageKey="some-key">Nextra 4.0 is released 🎉</Banner>
-// const navbar = (
-//   <Navbar
-//     logo={<b>Nextra</b>}
-//     // ... Your additional navbar options
-//   />
-// )
-// const footer = <Footer>MIT {new Date().getFullYear()} © Nextra.</Footer>
+// const banner = <Banner storageKey="some-key">released 🎉</Banner>
+const navbar = (
+  <Navbar
+    logo={<span>srating.io API V1 Documentation</span>}
+    // ... Your additional navbar options
+  />
+)
+const footer = <Footer><span>SRATING LLC</span></Footer>
  
 export default async function RootLayout({ children }) {
-  const themeConfig = useThemeConfig();
+
+  const pageMap = await getPageMap();
+  // console.log(pageMap);
   // useEffect(() => {
   //     window.dataLayer = window.dataLayer || [];
   //     function gtag(){window.dataLayer.push(arguments);}
@@ -32,12 +39,28 @@ export default async function RootLayout({ children }) {
       // Suggested by `next-themes` package https://github.com/pacocoursey/next-themes#with-app
       suppressHydrationWarning
     >
+      <head>
+        <meta name="theme-color" content="#000000" />
+        <meta
+          name="srating API Documentation"
+          content="Sports data API Documentation for college NCAA basketball"
+        />
+        <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
+        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+        <title>sRating Docs</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:title" content="srating API Docs" />
+        <meta property="og:description" content="srating API Documentation" />
+      </head>
       {/* <Head>
       </Head> */}
       <body>
         <Layout
-        pageMap={await getPageMap()}
-          {...themeConfig}
+          // banner={banner}
+          navbar={navbar}
+          pageMap={pageMap}
+          docsRepositoryBase="https://github.com/esmalleydev/srating.io-docs/tree/master"
+          footer={footer}
         >
           {children}
         </Layout>
