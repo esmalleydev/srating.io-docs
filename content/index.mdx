@@ -1,0 +1,147 @@
+---
+title: Get started
+description: Get started using srating.io API for college basketball and football data
+---
+
+## Connect to our API in a 3 steps
+Use our API to get [live scores](/game/getGames), [live odds](/game/getOdds), [statistics](/team/getStats), [teams](/team/get), [ranking](/ranking/get) and more!
+
+
+### 1. Get a free trial or paid API key
+[View our plans here...](https://srating.io/pricing) all you need is an email address. The free trial is limited to 500 requests per month and some data may be scrambled.
+
+### 2. Required Headers
+```console
+X-API-KEY
+```
+You must include your API key in the header under "X-API-KEY"
+
+### 3. Specify the sport and division
+
+Most requests will require a sport (organization_id) and division. For example games for college basketball and football are stored in the same table. [Read more here](/sports)
+
+### 4. Send a request
+
+[Using python? Click here](/python)
+
+GET
+
+```console
+https://api.srating.io/v1/game/getGames?start_date=2023-04-03&organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8&division_id=bf602dc4-3b4a-11ef-94bc-2a93761010b8
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'game',
+    'function': 'getGames',
+    'arguments': {
+      'organization_id': 'f1c37c98-3b4c-11ef-94bc-2a93761010b8',
+      'division_id': 'bf602dc4-3b4a-11ef-94bc-2a93761010b8',
+      'start_date': '2023-04-03',
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "40fd1ac3-5dd9-11ef-9222-9667e47de71a": {
+    "game_id": "40fd1ac3-5dd9-11ef-9222-9667e47de71a",
+    "organization_id": "f1c37c98-3b4c-11ef-94bc-2a93761010b8",
+    "division_id": "bf602dc4-3b4a-11ef-94bc-2a93761010b8",
+    "season": 2023,
+    "away_team_id": "885557ec-8549-11ed-bf01-5296e1552828",
+    "home_team_id": "75a9cb12-8549-11ed-bf01-5296e1552828",
+    "network": "CBS",
+    "away_score": 68,
+    "home_score": 68,
+    "status": "final",
+    "current_period": "Final",
+    "clock": "0:00",
+    "clock_last_updated_at": "2024-10-18T15:43:45.000Z",
+    "start_date": "2023-04-03T00:00:00.000Z",
+    "start_datetime": "2023-04-03T21:20:00.000Z",
+    "start_timestamp": 1680571200,
+    "updated_at": "2023-04-03T23:38:01.000Z",
+    "attendance": 72423,
+    "neutral_site": 1,
+    "is_conf_game": 0,
+    "boxscore": 1,
+    "guid": "0343dc2d-1021-43cd-956a-6aef5b9ed2d4",
+    "deleted": 0,
+    "odds": {
+      "pre": {
+          "odds_id": "20b29532-5f70-11ef-9222-9667e47de71a",
+          "game_id": "40fd1ac3-5dd9-11ef-9222-9667e47de71a",
+          "money_line_away": 312,
+          "money_line_home": -329,
+          "spread_away": 7,
+          "spread_home": -9,
+          "over": 119,
+          "under": 143,
+          "date_of_entry": "2023-04-03T04:00:00.000Z",
+          "live": 0,
+          "current": 0,
+          "guid": "66b566c6-7cac-417a-82bb-833c469837b6",
+          "deleted": 0,
+      },
+      "live": {
+          "odds_id": "209de407-5f70-11ef-9222-9667e47de71a",
+          "game_id": "40fd1ac3-5dd9-11ef-9222-9667e47de71a",
+          "money_line_away": 877,
+          "money_line_home": -3489,
+          "spread_away": 11,
+          "spread_home": -16,
+          "over": 144.5,
+          "under": 132.5,
+          "date_of_entry": "2023-04-03T08:00:00.000Z",
+          "live": 1,
+          "current": 1,
+          "guid": "d9db673c-ce69-4581-a1ec-a36ec273c6eb",
+          "deleted": 0,
+      }
+    },
+    "teams": {
+      "75a9cb12-8549-11ed-bf01-5296e1552828": {
+          "team_id": "75a9cb12-8549-11ed-bf01-5296e1552828",
+          "char6": "UCONN",
+          "code": "Connecticut",
+          "name": "Connecticut Huskies",
+          "alt_name": "Connecticut",
+          "primary_color": "#0C2340",
+          "secondary_color": null,
+          "guid": null,
+          "deleted": 0,
+          "conference_id": "aa230787-1095-11ef-9686-72fab666226a"
+      },
+      "885557ec-8549-11ed-bf01-5296e1552828": {
+          "team_id": "885557ec-8549-11ed-bf01-5296e1552828",
+          "char6": "SDSU",
+          "code": "San Diego State",
+          "name": "San Diego State Aztecs",
+          "alt_name": "San Diego St.",
+          "primary_color": "#A6192E",
+          "secondary_color": null,
+          "guid": null,
+          "deleted": 0,
+          "conference_id": "ac832348-1095-11ef-9686-72fab666226a"
+      }
+    }
+  }
+}
+```

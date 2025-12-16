@@ -1,11 +1,14 @@
 
+import { createMDX } from 'fumadocs-mdx/next';
 
-const withNextra = require('nextra')({
-  theme: 'nextra-theme-docs',
-  themeConfig: './theme.config.jsx'
-})
- 
-module.exports = withNextra();
+/** @type {import('next').NextConfig} */
+const config = {
+  reactStrictMode: true,
+};
 
+const withMDX = createMDX({
+  // customise the config file path
+  // configPath: "source.config.ts"
+});
 
-
+export default withMDX(config);
