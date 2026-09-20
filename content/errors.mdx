@@ -1,0 +1,78 @@
+---
+title: "Errors"
+description: "Always check the body:"
+---
+**Most errors come back with a `200` status code.** The API signals failure with an `error` key in the response body, not with the HTTP status, so checking `status_code == 200` will let failures through as if they succeeded.
+
+Always check the body:
+
+```js copy filename="javascript"
+const response = await fetch('https://api.srating.io/v1/team/get?team_id=87019264-8549-11ed-bf01-5296e1552828', {
+  'headers': { 'X-API-KEY': 'YOUR_API_KEY' },
+});
+
+const data = await response.json();
+
+if (data.error) {
+  throw new Error(data.error);
+}
+```
+
+An error response is always this shape, with `error` as a string:
+
+```json
+{
+  "error": "access denied"
+}
+```
+
+### Status codes
+
+Only four requests ever get a non-`200` status:
+
+| Code | Body | Meaning |
+| --- | --- | --- |
+| `400` | `{"error": "Invalid JSON format"}` | The POST body wasn't valid JSON |
+| `400` | `Bad Request` | The request had no URL at all |
+| `413` | `{"error": "Content Too Large"}` | POST body over 1MB. The connection is closed |
+| `429` | `{"error": "Too many requests"}` | You went over the [rate limit](/rate_limiter) |
+
+Everything else is `200` with an `error` key.
+
+### Access and key errors
+
+| Error | What happened |
+| --- | --- |
+| `access denied x-api-key header required.` | No `X-API-KEY` header. See [Headers](/headers) |
+| `access denied` | The key doesn't exist, or you don't have access to what you asked for |
+| `access denied, not v1` | The GET path isn't `/v1/{class}/{function}` — see [Endpoint](/endpoint) |
+| `access denied.` | That function exists but isn't available on the public API |
+| `usage limit reached` | You're out of usage tokens for the month. See [Usage tokens](/tokens) |
+| `subscription expired` | The subscription behind this key has lapsed |
+
+`access denied` is deliberately vague and covers several cases:
+
+- A restricted table — account, billing, and internal tables are never readable
+- A [read](/get_vs_read) on a table that doesn't support it, or on any table other than organization and division from a free trial key
+- A `create`, `update`, or `delete` without write access
+- A `query` without query access
+
+### Request errors
+
+| Error | What happened |
+| --- | --- |
+| `missing class` | No `class` in the request |
+| `missing function` | No `function` in the request |
+| `{class} class does not exist` | Check the spelling — the class is the table name |
+| `{function} is not a function` | That class has no such function |
+| `{argument} required.` | A required argument is missing. The message names it, e.g. `organization_id required.` |
+| `Arguments must be an object and not empty` | `arguments` was empty, or wasn't an object |
+| `Something went wrong, please try again later.` | Something failed on our end — worth retrying |
+
+### Errors still cost usage
+
+A request that fails **after** it's been authorized — a bad argument, an unknown function — costs a minimum of 1 usage token, and the response carries the usual `x-request-usage` header.
+
+Requests rejected for access reasons (no key, wrong key, no permission) cost nothing.
+
+See [Usage tokens](/tokens) for the details.

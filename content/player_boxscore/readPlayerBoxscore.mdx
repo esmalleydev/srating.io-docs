@@ -1,0 +1,97 @@
+---
+title: "readPlayerBoxscore"
+description: "Returns every matching player boxscore with the sport-specific stats already merged in."
+---
+Returns every matching player boxscore. Pass a `game_id` without a `player_id` and you get every player in that game — the usual way to pull a full stat sheet in one request.
+
+### Access
+
+This returns every matching row, so it needs a paid subscription with read access. Free trial keys get `access denied` — see [Usage tokens](/tokens).
+
+Usage is billed by response size, and a game's worth of players is a large response, so filter as tightly as you can.
+
+### Required arguments
+`organization_id`
+
+Everything else is a filter. `game_id` gets every player in a game; `player_id` with `season` gets one player's whole season.
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/player_boxscore/readPlayerBoxscore?organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8&game_id=0f0fb2e7-5dd9-11ef-9222-9667e47de71a
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'player_boxscore',
+    'function': 'readPlayerBoxscore',
+    'arguments': {
+      'organization_id': 'f1c37c98-3b4c-11ef-94bc-2a93761010b8',
+      'game_id': '0f0fb2e7-5dd9-11ef-9222-9667e47de71a',
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+
+Keyed by `player_boxscore_id`. Stat columns are trimmed here for readability — each row carries the full set shown on [getPlayerBoxscore](/player_boxscore/getPlayerBoxscore).
+
+```json
+{
+  "276da368-61ca-11ef-9222-9667e47de71a": {
+    "player_boxscore_id": "276da368-61ca-11ef-9222-9667e47de71a",
+    "organization_id": "f1c37c98-3b4c-11ef-94bc-2a93761010b8",
+    "division_id": "bf602dc4-3b4a-11ef-94bc-2a93761010b8",
+    "game_id": "0f0fb2e7-5dd9-11ef-9222-9667e47de71a",
+    "team_id": "87019264-8549-11ed-bf01-5296e1552828",
+    "player_id": "e27545f0-ad5a-11ed-9185-b6be2f39279c",
+    "season": 2023,
+    "final": 1,
+    "deleted": 0,
+    "first_name": "Fletcher",
+    "last_name": "Loyer",
+    "position": "G",
+    "minutes_played": 28.56,
+    "points": 6,
+    "assists": 3,
+    "total_rebounds": 4
+  },
+  "27a1e0f2-61ca-11ef-9222-9667e47de71a": {
+    "player_boxscore_id": "27a1e0f2-61ca-11ef-9222-9667e47de71a",
+    "organization_id": "f1c37c98-3b4c-11ef-94bc-2a93761010b8",
+    "division_id": "bf602dc4-3b4a-11ef-94bc-2a93761010b8",
+    "game_id": "0f0fb2e7-5dd9-11ef-9222-9667e47de71a",
+    "team_id": "87019264-8549-11ed-bf01-5296e1552828",
+    "player_id": "dff6dce2-ad5a-11ed-9185-b6be2f39279c",
+    "season": 2023,
+    "final": 1,
+    "deleted": 0,
+    "first_name": "Zach",
+    "last_name": "Edey",
+    "position": "C",
+    "minutes_played": 31.12,
+    "points": 22,
+    "assists": 1,
+    "total_rebounds": 11
+  }
+}
+```
+
+The stat columns you get back depend on the sport behind `organization_id`.

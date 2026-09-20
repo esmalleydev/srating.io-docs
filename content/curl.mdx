@@ -1,0 +1,45 @@
+---
+title: "curl"
+description: "Below are example GET and POST requests using curl."
+---
+Below are example GET and POST requests using curl.
+
+### Request
+
+GET
+
+```bash copy filename="curl"
+curl "https://api.srating.io/v1/game/getGames?start_date=2023-04-03&organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8&division_id=bf602dc4-3b4a-11ef-94bc-2a93761010b8" \
+  -H "X-API-KEY: YOUR_API_KEY"
+```
+
+Quote the URL — it has `&` in it, and an unquoted `&` will background the command in most shells.
+
+POST
+
+```bash copy filename="curl"
+curl "https://api.srating.io/v1" \
+  -H "X-API-KEY: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "class": "game",
+    "function": "getGames",
+    "arguments": {
+      "organization_id": "f1c37c98-3b4c-11ef-94bc-2a93761010b8",
+      "division_id": "bf602dc4-3b4a-11ef-94bc-2a93761010b8",
+      "start_date": "2023-04-03"
+    }
+  }'
+```
+
+### Checking for errors
+
+A failed request still comes back as `200` with an `error` key in the body, so check the body rather than the status code. See [Errors](/errors).
+
+```bash copy filename="curl"
+curl -s "https://api.srating.io/v1/game/getGames?start_date=2023-04-03&organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8&division_id=bf602dc4-3b4a-11ef-94bc-2a93761010b8" \
+  -H "X-API-KEY: YOUR_API_KEY" \
+  | jq 'if .error then "error: \(.error)" else "\(length) games" end'
+```
+
+To see how much usage a request cost, include the response headers with `-i` or `-D -` and look for `x-request-usage` — see [Headers](/headers).

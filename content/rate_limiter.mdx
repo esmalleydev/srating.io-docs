@@ -1,0 +1,22 @@
+---
+title: "Rate limiting"
+description: "The limit is 60 requests per second per API key."
+---
+The limit is **60 requests per second** per API key.
+
+Go over it and the API responds with a `429` status code. Once you cross the limit, expect to be shut out for about 30 seconds — retrying hard during that window won't get you through any sooner, so back off and space your requests out over several seconds instead.
+
+### Response Status code
+```console
+429 - Too many requests
+```
+
+```json
+{
+  "error": "Too many requests"
+}
+```
+
+Unlike most failures, this one really does come back with a non-`200` status — see [Errors](/errors) for the rest.
+
+This is separate from your monthly usage limit -- see [Usage tokens](/tokens) for how that's tracked and what happens when you run out.

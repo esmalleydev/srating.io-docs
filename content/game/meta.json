@@ -1,0 +1,12 @@
+{
+  "title": "Games / Scores",
+  "pages": [
+    "index",
+    "get",
+    "read",
+    "getGames",
+    "getScores",
+    "getOdds",
+    "getStats"
+  ]
+}

@@ -1,0 +1,107 @@
+---
+title: "getScores"
+description: "A lighter-weight version of getGames — returns just the score, status, clock and pre-game prediction for each game, without the full game, team or odds objects."
+---
+A lighter-weight version of [getGames](/game/getGames) — returns just the score, status, clock and pre-game prediction for each game, without the full game, team or odds objects.
+
+### Required arguments
+Must specify a organization_id, division_id and (start_date or a season with a home/away_team_id)
+
+`start_date` (YYYY-MM-DD)
+
+OR
+
+`season` AND (`home_team_id` OR `away_team_id`)
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/game/getScores?start_date=2023-04-03&organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8&division_id=bf602dc4-3b4a-11ef-94bc-2a93761010b8
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'game',
+    'function': 'getScores',
+    'arguments': {
+      'start_date': '2023-04-03',
+      'organization_id': 'f1c37c98-3b4c-11ef-94bc-2a93761010b8',
+      'division_id': 'bf602dc4-3b4a-11ef-94bc-2a93761010b8',
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "40fd1ac3-5dd9-11ef-9222-9667e47de71a": {
+    "game_id": "40fd1ac3-5dd9-11ef-9222-9667e47de71a",
+    "away_score": 68,
+    "home_score": 68,
+    "clock": "0:00",
+    "current_period": "Final",
+    "status": "final",
+    "prediction": {
+      "prediction_id": "6d8e3f0a-5dd9-11ef-9222-9667e47de71a",
+      "game_id": "40fd1ac3-5dd9-11ef-9222-9667e47de71a",
+      "season": 2023,
+      "home_percentage": 0.62,
+      "away_percentage": 0.38,
+      "home_score": 71,
+      "away_score": 65,
+      "live": 0,
+      "current": 1,
+      "date_of_entry": "2023-04-03T04:00:00.000Z",
+      "guid": "c1c8b6c1-1a9b-4c1e-9e1e-6b1f1c8b6c1a",
+      "deleted": 0
+    },
+    "odds": {
+      "pre": {
+          "odds_id": "20b29532-5f70-11ef-9222-9667e47de71a",
+          "game_id": "40fd1ac3-5dd9-11ef-9222-9667e47de71a",
+          "money_line_away": 312,
+          "money_line_home": -329,
+          "spread_away": 7,
+          "spread_home": -9,
+          "over": 119,
+          "under": 143,
+          "date_of_entry": "2023-04-03T04:00:00.000Z",
+          "live": 0,
+          "current": 0,
+          "deleted": 0
+      },
+      "live": {
+          "odds_id": "209de407-5f70-11ef-9222-9667e47de71a",
+          "game_id": "40fd1ac3-5dd9-11ef-9222-9667e47de71a",
+          "money_line_away": 877,
+          "money_line_home": -3489,
+          "spread_away": 11,
+          "spread_home": -16,
+          "over": 144.5,
+          "under": 132.5,
+          "date_of_entry": "2023-04-03T08:00:00.000Z",
+          "live": 1,
+          "current": 1,
+          "deleted": 0
+      }
+    }
+  }
+}
+```

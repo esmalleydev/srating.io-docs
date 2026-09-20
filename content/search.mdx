@@ -1,0 +1,94 @@
+---
+title: "Search"
+description: "Find a team, player, or coach by name when you don't have an id yet."
+---
+Find a team, player, or coach by **name** when you don't have an id yet. Most other requests need a `team_id`, `player_id`, or `coach_id` — this is how you get one.
+
+Searches are scoped to a sport, so you only get back teams and people who actually appear in that `organization_id` / `division_id`.
+
+### Required arguments
+`name`, `organization_id`, `division_id`
+
+`name` is a partial match — `purd` finds Purdue. Teams match on their name, code, or alt name. Players and coaches match on first or last name, and a two-word `name` is treated as first name + last name (either order).
+
+### Optional arguments
+`team`, `player`, `coach`
+
+Omit all three and teams, players, and coaches are all searched — that's the usual way to call it. Pass `team: 1` to search teams only.
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/search/search?name=purdue&organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8&division_id=bf602dc4-3b4a-11ef-94bc-2a93761010b8
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'search',
+    'function': 'search',
+    'arguments': {
+      'name': 'purdue',
+      'organization_id': 'f1c37c98-3b4c-11ef-94bc-2a93761010b8',
+      'division_id': 'bf602dc4-3b4a-11ef-94bc-2a93761010b8',
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+
+Each group is an **array**, capped at 6 results, or `null` if that group wasn't searched.
+
+```json
+{
+  "teams": [
+    {
+      "team_id": "87019264-8549-11ed-bf01-5296e1552828",
+      "char6": "PURDUE",
+      "code": "Purdue",
+      "name": "Purdue Boilermakers",
+      "alt_name": "Purdue",
+      "primary_color": "#010101"
+    }
+  ],
+  "players": [
+    {
+      "player_id": "dff6dce2-ad5a-11ed-9185-b6be2f39279c",
+      "first_name": "Zach",
+      "last_name": "Edey",
+      "begin": 2021,
+      "end": 2024,
+      "relevance_score": 30
+    }
+  ],
+  "coaches": [
+    {
+      "coach_id": "cf3f6a9d-0fe0-11ef-9686-72fab666226a",
+      "first_name": "Matt",
+      "last_name": "Painter",
+      "begin": 2006,
+      "end": 2026
+    }
+  ]
+}
+```
+
+`begin` and `end` are the first and last season that player or coach appears in the sport you searched, so you can tell two people with the same name apart.
+
+Players are ordered by `relevance_score` (exact last name match scores highest), then by most recent season.

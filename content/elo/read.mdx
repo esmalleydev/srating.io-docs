@@ -1,0 +1,75 @@
+---
+title: "read"
+description: "Returns every matching row instead of just the first."
+---
+Returns every matching row instead of just the first. See [get vs read](/get_vs_read) for details.
+
+Drop `team_id` from a [get](/elo/get) request to get every team's current elo for a season in one call.
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/elo/read?organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8&division_id=bf602dc4-3b4a-11ef-94bc-2a93761010b8&season=2023&current=1
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'elo',
+    'function': 'read',
+    'arguments': {
+      'organization_id': 'f1c37c98-3b4c-11ef-94bc-2a93761010b8',
+      'division_id': 'bf602dc4-3b4a-11ef-94bc-2a93761010b8',
+      'season': 2023,
+      'current': 1,
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "0146c60a-6257-11ef-9222-9667e47de71a": {
+    "elo_id": "0146c60a-6257-11ef-9222-9667e47de71a",
+    "organization_id": "f1c37c98-3b4c-11ef-94bc-2a93761010b8",
+    "division_id": "bf602dc4-3b4a-11ef-94bc-2a93761010b8",
+    "team_id": "87019264-8549-11ed-bf01-5296e1552828",
+    "game_id": "0f0fb2e7-5dd9-11ef-9222-9667e47de71a",
+    "season": 2023,
+    "elo": 1732,
+    "current": 1,
+    "date_of_entry": "2023-01-20T02:08:34.000Z",
+    "updated_at": "2023-01-20T02:08:34.000Z",
+    "deleted": 0
+  },
+  "0221d3f0-6257-11ef-9222-9667e47de71a": {
+    "elo_id": "0221d3f0-6257-11ef-9222-9667e47de71a",
+    "organization_id": "f1c37c98-3b4c-11ef-94bc-2a93761010b8",
+    "division_id": "bf602dc4-3b4a-11ef-94bc-2a93761010b8",
+    "team_id": "87c83148-8549-11ed-bf01-5296e1552828",
+    "game_id": "41128f5e-5dd9-11ef-9222-9667e47de71a",
+    "season": 2023,
+    "elo": 1588,
+    "current": 1,
+    "date_of_entry": "2023-02-05T21:12:10.000Z",
+    "updated_at": "2023-02-05T21:12:10.000Z",
+    "deleted": 0
+  }
+}
+```

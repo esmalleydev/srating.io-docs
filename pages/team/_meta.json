@@ -1,9 +1,0 @@
-{
-  "get": "get",
-  "read": "read",
-  "getPlayers": "getPlayers",
-  "getStats": "getStats",
-  "getConference": "getConference",
-  "getCoach": "getCoach",
-  "getSchedulePredictions": "getSchedulePredictions"
-}

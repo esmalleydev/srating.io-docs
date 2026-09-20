@@ -1,0 +1,13 @@
+{
+  "title": "Team",
+  "pages": [
+    "index",
+    "get",
+    "read",
+    "getPlayers",
+    "getStats",
+    "getConference",
+    "getCoach",
+    "getSchedulePredictions"
+  ]
+}

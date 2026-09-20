@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "index",
+    "overview",
+    "headers",
+    "endpoint",
+    "get_vs_read",
+    "tokens",
+    "errors",
+    "---Data---",
+    "sports",
+    "game",
+    "odds",
+    "team",
+    "player",
+    "coach",
+    "search",
+    "boxscore",
+    "player_boxscore",
+    "elo",
+    "cbb_transfer_player_season",
+    "conference",
+    "statistics",
+    "ranking",
+    "---Guides---",
+    "python",
+    "curl",
+    "types",
+    "rate_limiter"
+  ]
+}

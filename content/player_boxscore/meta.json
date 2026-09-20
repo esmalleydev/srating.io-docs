@@ -1,0 +1,8 @@
+{
+  "title": "Player boxscore",
+  "pages": [
+    "index",
+    "getPlayerBoxscore",
+    "readPlayerBoxscore"
+  ]
+}

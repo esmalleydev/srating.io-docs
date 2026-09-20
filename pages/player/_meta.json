@@ -1,6 +1,0 @@
-{
-  "get": "get",
-  "read": "read",
-  "getSeasons": "getSeasons",
-  "getGameLogs": "getGameLogs"
-}

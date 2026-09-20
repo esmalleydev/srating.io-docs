@@ -1,0 +1,55 @@
+---
+title: "getCoach"
+description: "Returns the coach for a team in a specified season."
+---
+Returns the coach for a team in a specified season.
+
+### Required arguments
+`organization_id` , `team_id` and `season`
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/team/getCoach?team_id=7860d20d-8549-11ed-bf01-5296e1552828&season=2023&organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'team',
+    'function': 'getCoach',
+    'arguments': {
+      'organization_id': 'f1c37c98-3b4c-11ef-94bc-2a93761010b8',
+      'team_id': '7860d20d-8549-11ed-bf01-5296e1552828',
+      'season': 2023,
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "coach_id": "b9905c1c-0fa4-11ef-9686-72fab666226a",
+  "first_name": "Dusty",
+  "last_name": "May",
+  "guid": "69a53ffc-0b68-45d0-88e0-9f2cca86b644",
+  "deleted": 0
+}
+```
+

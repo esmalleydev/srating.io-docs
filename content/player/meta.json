@@ -1,0 +1,10 @@
+{
+  "title": "Player",
+  "pages": [
+    "index",
+    "get",
+    "read",
+    "getSeasons",
+    "getGameLogs"
+  ]
+}

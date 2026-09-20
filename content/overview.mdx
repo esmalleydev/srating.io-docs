@@ -1,0 +1,39 @@
+---
+title: "Overview"
+description: "One API for college sports data: scores, odds, teams, players, boxscores, advanced stats and predictions, all through a simple class / function shape."
+---
+One API for college sports data: scores, odds, teams, players, boxscores, advanced stats and predictions, all through a simple `class` / `function` shape.
+
+### Sports covered
+
+- **College basketball** — NCAA Division I men's basketball
+- **College football** — FBS
+
+Both sports share the same tables and endpoints. You just point requests at a different `organization_id` / `division_id` -- see [Sports](/sports). New sports get added to the same schema, so nothing about how you query changes.
+
+### What you can pull
+
+| Category | What's in it | Where to start |
+| --- | --- | --- |
+| Games & scores | Schedules, live scores, final results | [getGames](/game/getGames) |
+| Odds | Money line, spread, over/under -- pregame and live | [getOdds](/game/getOdds) |
+| Boxscores | Full team and player box scores for every game | [getBoxscore](/boxscore/getBoxscore), [getPlayerBoxscore](/player_boxscore/getPlayerBoxscore) |
+| Team & player stats | Season averages, advanced efficiency metrics, and rank within the division | [getStats](/team/getStats), [getGameLogs](/player/getGameLogs) |
+| Elo ratings | A single strength rating per team, current or for a past season | [elo](/elo/get) |
+| Teams, players, coaches, conferences | Rosters, bios, and affiliations | [team](/team/get), [player](/player/get), [coach](/coach/get), [conference](/conference/get) |
+| Transfer portal | Player transfer commitments by season (college basketball) | [cbb_transfer_player_season](/cbb_transfer_player_season/get) |
+| Predictions | Win probability and projected score for every game, plus projected conference standings | [getSchedulePredictions](/team/getSchedulePredictions), [getConferencePrediction](/conference/getConferencePrediction) |
+| Rankings | Every team, player, transfer, conference, and coach ranked for a season | [Rankings](/ranking) |
+| Search | Look up a team, player, or coach by name to get its id | [search](/search) |
+
+### Why people use it
+
+- **It's live.** Scores and odds update in real time, not just after final.
+- **The advanced stats are already computed.** Pace, offensive/defensive rating, and efficiency come back ready to use -- no deriving them yourself from raw box scores.
+- **You get our model, not just the data.** Win probability and projected score for every game, and projected standings for every conference.
+- **History is included.** Past seasons, box scores, and odds movement are queryable the same way as today's data, which makes it easy to backtest a model.
+- **One schema, every sport.** Learn the shape once and it works the same way for basketball and football.
+
+### Get started
+
+[Grab a free API key](https://srating.io/pricing?view=api) -- all you need is an email address -- then head to the [quickstart](/) to make your first request.

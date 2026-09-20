@@ -1,0 +1,92 @@
+---
+title: "download"
+description: "Returns a full ranking for a division and season in one request — every team, player, transfer, conference, or coach, with all stat columns and their ranks."
+---
+Returns a full ranking for a division and season in one request — every team, player, transfer, conference, or coach, with all stat columns and their ranks.
+
+Rows come back flattened: where the underlying data nests a `player` or `statistic_ranking` object, those fields are merged up onto the row itself, so each row is a single flat object ready to write to CSV or load into a dataframe.
+
+### Access
+
+This request needs a paid **API** subscription. On a free trial or a plan without API access it returns:
+
+```json
+false
+```
+
+Usage is billed by response size, and a full ranking is a large response — see [Usage tokens](/tokens).
+
+### Required arguments
+`view`, `organization_id`, `division_id`, `season`
+
+`view` is one of `team`, `player`, `transfer`, `conference`, or `coach` — see [Rankings](/ranking) for what each one ranks. An unrecognized `view` falls back to `team`.
+
+### Optional arguments
+`career`, `career_active` — only apply when `view` is `player`. Set `career: 1` to rank career totals instead of a single season, and `career_active: 1` to limit that to currently active players.
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/ranking/download?view=team&organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8&division_id=bf602dc4-3b4a-11ef-94bc-2a93761010b8&season=2026
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'ranking',
+    'function': 'download',
+    'arguments': {
+      'view': 'team',
+      'organization_id': 'f1c37c98-3b4c-11ef-94bc-2a93761010b8',
+      'division_id': 'bf602dc4-3b4a-11ef-94bc-2a93761010b8',
+      'season': 2026,
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+
+One entry per ranked row. Stat columns are trimmed here for readability — a `team` row carries the full set shown on [team/getStats](/team/getStats), each with a matching `_rank`.
+
+```json
+{
+  "53fb68bb-e9e2-11ed-9185-b6be2f39279c": {
+    "statistic_ranking_id": "53fb68bb-e9e2-11ed-9185-b6be2f39279c",
+    "team_id": "87019264-8549-11ed-bf01-5296e1552828",
+    "conference_id": "aaa5086f-1095-11ef-9686-72fab666226a",
+    "code": "Purdue",
+    "name": "Purdue",
+    "season": 2026,
+    "wins": 29,
+    "losses": 6,
+    "points": 72.66,
+    "offensive_rating": 112.48,
+    "defensive_rating": 95.67,
+    "adjusted_efficiency_rating": 20.54,
+    "offensive_rating_rank": 11,
+    "defensive_rating_rank": 58,
+    "adjusted_efficiency_rating_rank": 10,
+    "date_of_rank": "2026-04-05T04:00:00.000Z",
+    "current": 1,
+    "deleted": 0
+  }
+}
+```
+
+On a `team` ranking each row also gets `name`, `code`, and `conference_id` merged in, so you don't need a second request to label the rows.

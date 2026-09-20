@@ -1,0 +1,88 @@
+---
+title: "getStats"
+description: "Returns the stats both teams had going into a specific game — not their end-of-season numbers."
+---
+Returns the stats both teams had **going into** a specific game — not their end-of-season numbers.
+
+Rankings are stored once per day, if there were games the day before and this picks the most recent row for each team dated on or before the game. Nothing calculated after the game is used, which is what you want when backtesting a model: it's the information that was actually available at tip-off.
+
+### Required arguments
+`game_id`
+
+That's it — the sport, division, season, and both teams are read off the game.
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/game/getStats?game_id=40fd1ac3-5dd9-11ef-9222-9667e47de71a
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'game',
+    'function': 'getStats',
+    'arguments': {
+      'game_id': '40fd1ac3-5dd9-11ef-9222-9667e47de71a',
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+
+Keyed by `team_id` — the home team and the away team. Stat columns are trimmed here for readability; each row carries the full set shown on [team/getStats](/team/getStats).
+
+```json
+{
+  "75a9cb12-8549-11ed-bf01-5296e1552828": {
+    "statistic_ranking_id": "4a1c8d3e-e9e2-11ed-9185-b6be2f39279c",
+    "team_id": "75a9cb12-8549-11ed-bf01-5296e1552828",
+    "season": 2023,
+    "wins": 30,
+    "losses": 8,
+    "points": 75.42,
+    "offensive_rating": 118.06,
+    "defensive_rating": 94.11,
+    "adjusted_efficiency_rating": 23.95,
+    "adjusted_efficiency_rating_rank": 3,
+    "date_of_rank": "2023-04-02T04:00:00.000Z",
+    "current": 0,
+    "deleted": 0
+  },
+  "885557ec-8549-11ed-bf01-5296e1552828": {
+    "statistic_ranking_id": "5c2d9e4f-e9e2-11ed-9185-b6be2f39279c",
+    "team_id": "885557ec-8549-11ed-bf01-5296e1552828",
+    "season": 2023,
+    "wins": 31,
+    "losses": 6,
+    "points": 72.18,
+    "offensive_rating": 109.74,
+    "defensive_rating": 91.82,
+    "adjusted_efficiency_rating": 17.92,
+    "adjusted_efficiency_rating_rank": 12,
+    "date_of_rank": "2023-04-02T04:00:00.000Z",
+    "current": 0,
+    "deleted": 0
+  }
+}
+```
+
+`date_of_rank` tells you which day's snapshot you got. A team can come back `null` if no ranking exists on or before the game date — early-season games, mostly.
+
+For a team's **current** stats instead, use [team/getStats](/team/getStats).

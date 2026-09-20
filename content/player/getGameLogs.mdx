@@ -1,0 +1,139 @@
+---
+title: "getGameLogs"
+description: "This request returns the player boxscores for a season along with the game information."
+---
+This request returns the player boxscores for a season along with the game information.
+
+### Required arguments
+`organization_id`, `division_id`, `player_id`, `season`
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/player/getGameLogs?organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8&division_id=bf602dc4-3b4a-11ef-94bc-2a93761010b8&player_id=dff6dce2-ad5a-11ed-9185-b6be2f39279c&season=2023
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'player',
+    'function': 'getGameLogs',
+    'arguments': {
+      'organization_id': 'f1c37c98-3b4c-11ef-94bc-2a93761010b8',
+      'division_id': 'bf602dc4-3b4a-11ef-94bc-2a93761010b8',
+      'player_id': 'dff6dce2-ad5a-11ed-9185-b6be2f39279c',
+      'season': 2023,
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "24a43070-61ca-11ef-9222-9667e47de71a": {
+    "player_boxscore_id": "24a43070-61ca-11ef-9222-9667e47de71a",
+    "organization_id": "f1c37c98-3b4c-11ef-94bc-2a93761010b8",
+    "division_id": "bf602dc4-3b4a-11ef-94bc-2a93761010b8",
+    "game_id": "ea25d92a-5dd8-11ef-9222-9667e47de71a",
+    "team_id": "87019264-8549-11ed-bf01-5296e1552828",
+    "player_id": "dff6dce2-ad5a-11ed-9185-b6be2f39279c",
+    "season": 2023,
+    "sport_player_boxscore_id": "24a27b17-61ca-11ef-9222-9667e47de71a",
+    "final": 1,
+    "deleted": 0,
+    "basketball_player_boxscore_id": "24a27b17-61ca-11ef-9222-9667e47de71a",
+    "first_name": "Zach",
+    "last_name": "Edey",
+    "position": "C",
+    "minutes_played": 32.28,
+    "field_goal": 6,
+    "field_goal_attempts": 11,
+    "field_goal_percentage": 54.55,
+    "two_point_field_goal": 6,
+    "two_point_field_goal_attempts": 11,
+    "two_point_field_goal_percentage": 54.55,
+    "three_point_field_goal": 0,
+    "three_point_field_goal_attempts": 0,
+    "three_point_field_goal_percentage": 0,
+    "free_throws": 4,
+    "free_throw_attempts": 4,
+    "free_throw_percentage": 100,
+    "offensive_rebounds": 4,
+    "defensive_rebounds": 7,
+    "total_rebounds": 11,
+    "assists": 1,
+    "steals": 0,
+    "blocks": 1,
+    "turnovers": 1,
+    "fouls": 3,
+    "points": 16,
+    "game": {
+      "game_id": "ea25d92a-5dd8-11ef-9222-9667e47de71a",
+      "organization_id": "f1c37c98-3b4c-11ef-94bc-2a93761010b8",
+      "division_id": "bf602dc4-3b4a-11ef-94bc-2a93761010b8",
+      "season": 2023,
+      "away_team_id": "87c83148-8549-11ed-bf01-5296e1552828",
+      "home_team_id": "87019264-8549-11ed-bf01-5296e1552828",
+      "network": null,
+      "away_score": 63,
+      "home_score": 61,
+      "status": "final",
+      "current_period": "Final",
+      "clock": "0:00",
+      "clock_last_updated_at": "2024-10-18T15:43:45.000Z",
+      "start_date": "2023-03-10T00:00:00.000Z",
+      "start_datetime": "2023-03-10T12:00:00.000Z",
+      "start_timestamp": 1678467600,
+      "updated_at": "2023-03-11T08:55:57.000Z",
+      "attendance": 16738,
+      "neutral_site": 1,
+      "is_conf_game": 0,
+      "boxscore": 1,
+      "guid": "d78b07d6-222c-4944-8110-c3cd4c5959ab",
+      "deleted": 0,
+      "teams": {
+        "87019264-8549-11ed-bf01-5296e1552828": {
+            "team_id": "87019264-8549-11ed-bf01-5296e1552828",
+            "char6": "PURDUE",
+            "code": "Purdue",
+            "name": "Purdue Boilermakers",
+            "alt_name": "Purdue",
+            "primary_color": "#010101",
+            "secondary_color": null,
+            "guid": null,
+            "deleted": 0
+        },
+        "87c83148-8549-11ed-bf01-5296e1552828": {
+            "team_id": "87c83148-8549-11ed-bf01-5296e1552828",
+            "char6": "RUTGER",
+            "code": "Rutgers",
+            "name": "Rutgers Scarlet Knights",
+            "alt_name": "Rutgers",
+            "primary_color": "#C8102E",
+            "secondary_color": null,
+            "guid": null,
+            "deleted": 0
+        }
+      }
+    }
+  },
+  ...
+}
+```
+
