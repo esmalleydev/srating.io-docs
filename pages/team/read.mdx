@@ -1,0 +1,67 @@
+## Read team rows
+
+Returns every matching row instead of just the first. See [get vs read](/get_vs_read) for details. Most filter arguments also accept an array of values, matched with an `OR`.
+
+### Request
+
+GET
+
+```console
+https://api.srating.io/v1/team/read?team_id=87019264-8549-11ed-bf01-5296e1552828&team_id=87c83148-8549-11ed-bf01-5296e1552828
+```
+
+POST
+```js {5} copy filename="javascript"
+fetch('https://api.srating.io/v1', {
+  'method': 'POST',
+  'headers': {
+    'Content-Type': 'application/json',
+    'X-API-KEY': 'YOUR_API_KEY',
+  },
+  'body': JSON.stringify({
+    'class': 'team',
+    'function': 'read',
+    'arguments': {
+      'team_id': [
+        '87019264-8549-11ed-bf01-5296e1552828',
+        '87c83148-8549-11ed-bf01-5296e1552828',
+      ],
+    }
+  }),
+}).then(response => {
+  return response.json();
+}).then(json => {
+  console.log(json);
+  return json;
+}).catch(error => {
+  console.log(error);
+});
+```
+
+Response
+```json
+{
+  "87019264-8549-11ed-bf01-5296e1552828": {
+    "team_id": "87019264-8549-11ed-bf01-5296e1552828",
+    "char6": "PURDUE",
+    "code": "Purdue",
+    "name": "Purdue Boilermakers",
+    "alt_name": "Purdue",
+    "primary_color": "#010101",
+    "secondary_color": null,
+    "guid": null,
+    "deleted": 0
+  },
+  "87c83148-8549-11ed-bf01-5296e1552828": {
+    "team_id": "87c83148-8549-11ed-bf01-5296e1552828",
+    "char6": "RUTGER",
+    "code": "Rutgers",
+    "name": "Rutgers Scarlet Knights",
+    "alt_name": "Rutgers",
+    "primary_color": "#C8102E",
+    "secondary_color": null,
+    "guid": null,
+    "deleted": 0
+  }
+}
+```

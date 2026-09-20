@@ -1,3 +1,31 @@
-## Usage tokens
+## Usage
 
-All requests by default count as 1 usage token. Some requests use more than 1 usage token; a usage section will be documented in such case.
+Instead of billing per request, we bill by how much data a request actually returns. Every response you get back costs some number of **usage tokens**, deducted from your key's monthly usage limit.
+
+### How a request is priced
+
+- A response costs roughly 1 usage token per 500 bytes returned, rounded up, with a 1 token minimum. A single-row [get](/get_vs_read) is typically 1 token; a [read](/get_vs_read) or an endpoint like [getGames](/game/getGames) that returns many rows costs more the more data it sends back.
+- An error still costs a flat 1 token minimum once your request has passed authorization (for example, bad arguments to a valid table/function) -- so probing for valid arguments isn't free.
+- A request that's denied for access reasons (missing/invalid API key, restricted table, or missing read/write/query access) costs nothing.
+
+### Response headers
+
+Every response includes:
+```console
+X-USAGE-REMAINING
+X-USAGE-USED
+X-REQUEST-USAGE
+```
+`X-USAGE-REMAINING` and `X-USAGE-USED` reflect your key's usage against its monthly limit after this request. `X-REQUEST-USAGE` is the cost of just this request. See [Headers](/headers) for the full list of headers.
+
+### Monthly usage limit
+
+Each plan has a monthly usage limit that resets on the 1st of each month. Once a request would take you over your limit, that request is still let through -- so a single large request can put you over -- but every request after that is rejected with:
+```json
+{"error": "usage limit reached"}
+```
+`X-USAGE-REMAINING` will read `0` on that response, and note it still arrives with a `200` status code — see [Errors](/errors). [View our plans](https://srating.io/pricing?view=api) to see the usage limit for each tier.
+
+### Free trial
+
+The free trial is limited to 500 usage tokens per month, some numeric columns are randomized, and bulk `read` access is limited to [organization and division](/sports) -- every other table is `get()`-only on a trial key.

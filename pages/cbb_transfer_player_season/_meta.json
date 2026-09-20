@@ -1,3 +1,4 @@
 {
-  "get": "get"
+  "get": "get",
+  "read": "read"
 }

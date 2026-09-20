@@ -9,7 +9,7 @@ You will typically pass in `organization_id`, `game_id` and `team_id`.
 GET
 
 ```console
-https://api.srating.io/v1/boxscore/get?organization_id=f1dedce6-3b4c-11ef-94bc-2a93761010b8&game_id=91897046-68e4-11ef-9222-9667e47de71a&team_id=75a9cb12-8549-11ed-bf01-5296e1552828
+https://api.srating.io/v1/boxscore/getBoxscore?organization_id=f1dedce6-3b4c-11ef-94bc-2a93761010b8&game_id=91897046-68e4-11ef-9222-9667e47de71a&team_id=75a9cb12-8549-11ed-bf01-5296e1552828
 ```
 
 POST
@@ -22,7 +22,7 @@ fetch('https://api.srating.io/v1', {
   },
   'body': JSON.stringify({
     'class': 'boxscore',
-    'function': 'get',
+    'function': 'getBoxscore',
     'arguments': {
       'organization_id': 'f1dedce6-3b4c-11ef-94bc-2a93761010b8',
       'game_id': '91897046-68e4-11ef-9222-9667e47de71a',
@@ -49,7 +49,6 @@ Response
   "team_id": "75a9cb12-8549-11ed-bf01-5296e1552828",
   "season": 2024,
   "sport_boxscore_id": "13b21c0e-68e5-11ef-9222-9667e47de71a",
-  "guid": "178818ae-2193-423c-a389-1c50fc9dc876",
   "final": 1,
   "deleted": 0,
   "football_boxscore_id": "13b21c0e-68e5-11ef-9222-9667e47de71a",

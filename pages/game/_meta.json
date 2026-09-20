@@ -1,5 +1,8 @@
 {
   "get": "get",
+  "read": "read",
   "getGames": "getGames",
-  "getOdds": "getOdds"
+  "getScores": "getScores",
+  "getOdds": "getOdds",
+  "getStats": "getStats"
 }

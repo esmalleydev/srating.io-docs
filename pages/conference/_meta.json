@@ -1,3 +1,5 @@
 {
-  "get": "get"
+  "get": "get",
+  "read": "read",
+  "getConferencePrediction": "getConferencePrediction"
 }

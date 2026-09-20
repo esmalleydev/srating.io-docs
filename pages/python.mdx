@@ -2,6 +2,8 @@
 
 Below are example get and post requests using python.
 
+Note the error check: a failed request comes back as `200` with an `error` key in the body, so testing `status_code` alone is not enough. See [Errors](/errors).
+
 ### Request
 
 GET
@@ -20,12 +22,16 @@ url = "https://api.srating.io/v1/game/getGames?start_date=2023-04-01&organizatio
 # Send the GET request with the headers
 response = requests.get(url, headers=headers)
 
-# Check the status code to ensure the request was successful (200 OK)
-if response.status_code == 200:
-  # Print the response content
-  print(response.text)
-else:
+if response.status_code != 200:
   print(f"Request failed with status code: {response.status_code}")
+else:
+  games = response.json()
+
+  # Errors come back as 200 with an "error" key, so check the body too
+  if isinstance(games, dict) and "error" in games:
+    print(f"API error: {games['error']}")
+  else:
+    print(f"{len(games)} games")
 ```
 
 POST
@@ -55,10 +61,24 @@ data = {
 # Send the POST request with the headers and data
 response = requests.post(url, headers=headers, json=data)
 
-# Check the status code to ensure the request was successful (200 OK)
-if response.status_code == 200:
-  # Print the response content
-  print(response.text)
-else:
+if response.status_code != 200:
   print(f"Request failed with status code: {response.status_code}")
+else:
+  games = response.json()
+
+  if isinstance(games, dict) and "error" in games:
+    print(f"API error: {games['error']}")
+  else:
+    print(f"{len(games)} games")
 ```
+
+### Tracking your usage
+
+Every response carries your usage in the headers, so you can log what a request cost:
+
+```python copy filename="python"
+print(response.headers.get("x-request-usage"), "tokens for this request")
+print(response.headers.get("x-usage-remaining"), "remaining this month")
+```
+
+See [Usage tokens](/tokens) for how the cost is calculated.

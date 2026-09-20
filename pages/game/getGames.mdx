@@ -2,7 +2,7 @@
 The getGames call will return the games along with [odds](/odds/get), [teams](/team/get) data.
 
 ### Usage
-This will count as 40 usage tokens.
+Usage scales with the size of the response -- see [Usage tokens](/tokens) for how it's calculated. A typical day of games, with odds and team data included, costs around 40 usage tokens; more games returned costs more.
 
 The same data can be retrieved with other relevant get requests, but typically this request will be more efficent when there are more than 4 games in a day.
 
@@ -90,8 +90,7 @@ Response
           "date_of_entry": "2023-04-03T04:00:00.000Z",
           "live": 0,
           "current": 0,
-          "guid": "66b566c6-7cac-417a-82bb-833c469837b6",
-          "deleted": 0,
+          "deleted": 0
       },
       "live": {
           "odds_id": "209de407-5f70-11ef-9222-9667e47de71a",
@@ -105,8 +104,7 @@ Response
           "date_of_entry": "2023-04-03T08:00:00.000Z",
           "live": 1,
           "current": 1,
-          "guid": "d9db673c-ce69-4581-a1ec-a36ec273c6eb",
-          "deleted": 0,
+          "deleted": 0
       }
     },
     "teams": {

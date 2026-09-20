@@ -1,13 +1,13 @@
 ## Get an elo row
 
-This request will find the first matching row and typically only used when passing in the `elo_id` or `organization_id`, `team_id` and `season` argument.
+This request will find the first matching row and typically only used when passing in the `elo_id` or `organization_id`, `division_id`, `team_id` and `season` argument.
 
 ### Request
 
 GET
 
 ```console
-https://api.srating.io/v1/elo/get?organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8&team_id=87019264-8549-11ed-bf01-5296e1552828&season=2023&current=1
+https://api.srating.io/v1/elo/get?organization_id=f1c37c98-3b4c-11ef-94bc-2a93761010b8&division_id=bf602dc4-3b4a-11ef-94bc-2a93761010b8&team_id=87019264-8549-11ed-bf01-5296e1552828&season=2023&current=1
 ```
 
 POST
@@ -23,6 +23,7 @@ fetch('https://api.srating.io/v1', {
     'function': 'get',
     'arguments': {
       'organization_id': 'f1c37c98-3b4c-11ef-94bc-2a93761010b8',
+      'division_id': 'bf602dc4-3b4a-11ef-94bc-2a93761010b8',
       'team_id': '87019264-8549-11ed-bf01-5296e1552828',
       'season': 2023,
       'current': 1,
@@ -48,10 +49,9 @@ Response
   "game_id": "0f0fb2e7-5dd9-11ef-9222-9667e47de71a",
   "season": 2023,
   "elo": 1732,
-  "current": 0,
+  "current": 1,
   "date_of_entry": "2023-01-20T02:08:34.000Z",
   "updated_at": "2023-01-20T02:08:34.000Z",
-  "guid": "dff7914a-59de-4b8f-92f2-1132eae2761e",
-  "deleted": 0,
+  "deleted": 0
 }
 ```

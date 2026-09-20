@@ -1,3 +1,5 @@
 {
-  "getPlayerBoxscore": "getPlayerBoxscore"
+  "getPlayerBoxscore": "getPlayerBoxscore",
+  "read": "read",
+  "readPlayerBoxscore": "readPlayerBoxscore"
 }

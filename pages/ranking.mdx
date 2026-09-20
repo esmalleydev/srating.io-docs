@@ -1,0 +1,15 @@
+Rankings are our computed leaderboards for a whole division in a season — every team, player, transfer, conference, or coach ranked against each other, with the rank for each individual stat.
+
+[Download a ranking](/ranking/download) pulls one down in a single request, already flattened for a spreadsheet or dataframe.
+
+### Available rankings
+
+| `view` | Ranks | Rows keyed by |
+| --- | --- | --- |
+| `team` | Every team in the division | `statistic_ranking_id` |
+| `player` | Every player in the division | `player_statistic_ranking_id` |
+| `transfer` | Players in the transfer portal (college basketball) | `player_statistic_ranking_id` |
+| `conference` | Every conference | `conference_statistic_ranking_id` |
+| `coach` | Every coach | `coach_statistic_ranking_id` |
+
+Each row carries the same stat columns you get from [team/getStats](/team/getStats) — the season averages plus a matching `_rank` for each one.
