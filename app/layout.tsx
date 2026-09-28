@@ -7,7 +7,7 @@ import { baseOptions } from '@/lib/layout.shared';
 import './global.css';
 
 const DESCRIPTION =
-  'Sports data API for college basketball and college football: live scores, live odds, box scores, advanced stats, elo ratings, predictions and rankings.';
+  'Sports data API for college basketball and college football: live scores, market line data, box scores, advanced stats, elo ratings, predictions and rankings.';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://docs.srating.io'),

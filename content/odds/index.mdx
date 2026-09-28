@@ -1,12 +1,12 @@
 ---
-title: "Odds"
-description: "The odds table will contain the money line, spread, over / under information for a game."
+title: "Market lines"
+description: "Market reference data for a game, kept alongside our own projections."
 ---
-The `odds` table will contain the money line, spread, over / under information for a game.
+The `odds` table holds market reference data for a game, kept alongside our own projections.
 
-A row will not be updated, if the odds change, a new row will be created.
+A row will not be updated, if the line changes, a new row will be created.
 
-You can find the current odds by specifing `current` = 1 and use `live` to determine if the odds are before or during the game.
+You can find the current line by specifing `current` = 1 and use `live` to determine if the row is from before or during the game.
 
 ### Example row
 ```json

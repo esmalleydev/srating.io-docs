@@ -6,6 +6,16 @@ import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { getMDXComponents } from '@/components/mdx';
 import type { Metadata } from 'next';
 
+// Market line reference pages stay published for API customers but are kept
+// out of search results. follow:true still lets Google traverse links out of
+// them into the rest of the docs.
+const NOINDEX_URLS = new Set([
+  '/odds',
+  '/odds/get',
+  '/odds/read',
+  '/game/getOdds',
+]);
+
 export default async function Page(props: PageProps<'/[[...slug]]'>) {
   const params = await props.params;
   const page = source.getPage(params.slug);
@@ -35,5 +45,6 @@ export async function generateMetadata(props: PageProps<'/[[...slug]]'>): Promis
   return {
     title: page.data.title,
     description: page.data.description,
+    robots: NOINDEX_URLS.has(page.url) ? { index: false, follow: true } : undefined,
   };
 }
