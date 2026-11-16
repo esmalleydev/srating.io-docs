@@ -1,8 +1,8 @@
 ---
 title: "Types of requests"
-description: "Every table in these docs supports two base requests: get and read."
+description: "Tables in these docs support two base requests: get and read."
 ---
-Every table in these docs supports two base requests: `get` and `read`. You'll see `get` used in most of the examples, but `read` works the same way on the same tables.
+Tables in these docs support two base requests: `get`, and on [most of them](#read) `read`. You'll see `get` used in most of the examples, but `read` works the same way on the tables that support it.
 
 ### get
 Returns the **first** matching row as a single object.
@@ -73,7 +73,7 @@ Response
 }
 ```
 
-`read` is available on nearly every table (`game`, `team`, `player`, `coach`, `odds`, `boxscore`, `player_boxscore`, `elo`, `conference`, `cbb_transfer_player_season`, and more) — anywhere you see a `get` request in these docs, `read` works the same way but returns everything that matches instead of just the first row.
+`read` is available on `organization`, `division`, `game`, `team`, `player`, `coach`, `odds`, `boxscore`, `player_boxscore`, `elo`, `conference` and `cbb_transfer_player_season`. On those tables it works the same way as `get` but returns everything that matches instead of just the first row. A `read` on any other table returns `access denied`, see [Errors](/errors).
 
 ### Custom requests
 
