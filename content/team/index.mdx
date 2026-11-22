@@ -19,12 +19,20 @@ The team table will contain team information
 {
   "team_id": "87019264-8549-11ed-bf01-5296e1552828",
   "char6": "PURDUE",
-  "code": "Purdue",
+  "code": "PUR",
   "name": "Purdue Boilermakers",
-  "alt_name": "Purdue",
+  "name_short": "Purdue",
   "primary_color": "#010101",
   "secondary_color": null,
   "guid": null,
   "deleted": 0
 }
 ```
+
+### Names
+- `name` is the full name, with the mascot: `Purdue Boilermakers`.
+- `name_short` is the name the team is shown by: `Purdue`, `Arizona St.`, `Ole Miss`. It is null when a team has no shorter name.
+- `code` is the team's abbreviation, `PUR` or `NU`. It is null for teams without a curated one.
+- `char6` is the NCAA's six character code. It is used for matching, not display.
+
+`name_short` replaces `alt_name`. Filtering on `alt_name` (`team/read?alt_name=Purdue`) still works as an alias for `name_short`, but responses carry `name_short` only. Before this change `code` held a short name such as `Purdue`; it now holds abbreviations only.

@@ -9,7 +9,7 @@ Searches are scoped to a sport, so you only get back teams and people who actual
 ### Required arguments
 `name`, `organization_id`, `division_id`
 
-`name` is a partial match — `purd` finds Purdue. Teams match on their name, code, or alt name. Players and coaches match on first or last name, and a two-word `name` is treated as first name + last name (either order).
+`name` is a partial match — `purd` finds Purdue. Teams match on their name, short name (`name_short`), or code. Players and coaches match on first or last name, and a two-word `name` is treated as first name + last name (either order).
 
 ### Optional arguments
 `team`, `player`, `coach`
@@ -61,9 +61,9 @@ Each group is an **array**, capped at 6 results, or `null` if that group wasn't 
     {
       "team_id": "87019264-8549-11ed-bf01-5296e1552828",
       "char6": "PURDUE",
-      "code": "Purdue",
+      "code": "PUR",
       "name": "Purdue Boilermakers",
-      "alt_name": "Purdue",
+      "name_short": "Purdue",
       "primary_color": "#010101"
     }
   ],
