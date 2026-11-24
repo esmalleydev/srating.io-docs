@@ -1,0 +1,58 @@
+---
+title: "MCP server"
+description: "Ask Claude, ChatGPT and other AI assistants about college basketball and college football, answered from srating.io data. No API key needed."
+---
+Ask Claude, ChatGPT and other AI assistants about college basketball and college football, answered from srating.io data. The srating.io MCP server gives an assistant [nine read-only tools](/mcp/tools) for teams, players, coaches, conferences, scores, box scores and rankings.
+
+It needs no API key and no account.
+
+### Connect
+
+**Claude** -- open the connector directory, search for **srating** and add it. That works on claude.ai and in the Claude desktop and mobile apps.
+
+**Any other client** -- add a custom connector (also called a remote MCP server) with this url. It uses the streamable HTTP transport and no authentication.
+
+```console copy
+https://mcp.srating.io/mcp
+```
+
+**Claude Code**
+
+```console copy
+claude mcp add --transport http srating https://mcp.srating.io/mcp
+```
+
+**ChatGPT** -- turn on developer mode in settings, create a connector with the url above, and set authentication to none.
+
+**Cursor, VS Code and other JSON-configured clients**
+
+```json copy filename="mcp.json"
+{
+  "mcpServers": {
+    "srating": {
+      "url": "https://mcp.srating.io/mcp"
+    }
+  }
+}
+```
+
+Then just ask: *"Who are the top 10 college basketball teams right now?"* or *"How has Duke played this season?"*
+
+### Good to know
+
+- **Seasons are the ending year.** The 2026-27 basketball season is `2027`. Every tool defaults to the current season.
+- **Names go in, ids come out.** Tools take `sport` (`cbb` or `cfb`) and `division` as words. Assistants start with `search_entities` to turn a name into an id, then pass that id to the other tools.
+- **Every answer links back.** Results include a srating.io link for each team, player, coach, conference and game, plus the API call the data came from.
+- **Win probability and projected scores are not included.** Tools that touch a game or a conference standing return a link to srating.io projections instead.
+- **Capacity is shared.** Everyone using the MCP server draws from one monthly allowance. If it runs out, tools answer with an error saying so until the next month. For volume you can count on, use [the API](/) with your own key.
+
+### MCP server or API?
+
+| | MCP server | API |
+| --- | --- | --- |
+| Who calls it | An AI assistant, on your behalf | Your code |
+| Auth | None | `X-API-KEY` header -- see [Headers](/headers) |
+| Sports and divisions | Words: `cbb`, `d1` | Ids: `organization_id`, `division_id` -- see [Sports](/sports) |
+| Data | [Nine curated tools](/mcp/tools), capped row counts | Every documented class and function, bulk `read`, [downloads](/ranking/download) |
+| Predictions | Not included | Included with a subscription, see [getSchedulePredictions](/team/getSchedulePredictions) |
+| Cost | Free, shared capacity | Metered by [usage tokens](/tokens) per key |

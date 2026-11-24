@@ -1,0 +1,195 @@
+---
+title: "Tools"
+description: "The nine read-only tools the srating.io MCP server gives an AI assistant, with their arguments and what they return."
+---
+The nine read-only tools the [srating.io MCP server](/mcp) gives an AI assistant. Your assistant picks the tool and fills in the arguments; this page is for knowing what it can reach.
+
+Every tool answers twice: a one-line text summary for the chat, and `structuredContent` with the data. Every result carries a `source` naming the [API](/) call it came from.
+
+### Shared arguments
+
+| Argument | Values | Default |
+| --- | --- | --- |
+| `sport` | `cbb` college basketball, `cfb` college football | required |
+| `division` | `cbb`: `d1`, `d2`, `d3`. `cfb`: `fbs`, `fcs` | `d1` / `fbs` |
+| `season` | The **ending** year: the 2026-27 season is `2027` | the current season |
+
+### search_entities
+Find teams, players and coaches by name, and get the ids the other tools take. Returns at most 6 matches of each kind.
+
+| Argument | Type | Required | |
+| --- | --- | --- | --- |
+| `name` | string | yes | Full or partial name, at least 2 characters: `Duke`, `Cooper Flagg` |
+| `sport` | `cbb` \| `cfb` | yes | |
+| `division` | string | no | |
+| `kind` | `team` \| `player` \| `coach` | no | Search one kind only. Omit to search all three |
+
+Wraps [search](/search).
+
+```json
+{
+  "sport": "cbb",
+  "teams": [
+    {
+      "team_id": "776c41dc-8549-11ed-bf01-5296e1552828",
+      "name": "Duquesne Dukes",
+      "code": "DUQ",
+      "url": "https://srating.io/cbb/team/duquesne?utm_source=mcp&utm_medium=assistant&utm_campaign=connector"
+    },
+    {
+      "team_id": "774ffe68-8549-11ed-bf01-5296e1552828",
+      "name": "Duke Blue Devils",
+      "code": "DUKE",
+      "url": "https://srating.io/cbb/team/duke?utm_source=mcp&utm_medium=assistant&utm_campaign=connector"
+    }
+  ],
+  "players": [],
+  "coaches": [],
+  "source": {
+    "api_call": "search.search",
+    "api_docs": "https://docs.srating.io/search"
+  }
+}
+```
+
+### get_scoreboard
+Scores, clock and status for every game on a date, with a srating.io link per game. Returns up to 200 games.
+
+| Argument | Type | Required | |
+| --- | --- | --- | --- |
+| `sport` | `cbb` \| `cfb` | yes | |
+| `date` | string | yes | `YYYY-MM-DD` |
+| `division` | string | no | |
+
+Each game has `game_id`, `status`, `clock`, `period`, `home` and `away` (`name`, `score`, `url`) and its own `url`. Wraps [getGames](/game/getGames).
+
+### get_game
+The result, status and team box score totals for one game.
+
+| Argument | Type | Required | |
+| --- | --- | --- | --- |
+| `sport` | `cbb` \| `cfb` | yes | |
+| `game_id` | string | yes | From `get_scoreboard` |
+
+Returns `status`, `start_date`, `home`, `away`, one `boxscores` row per team, and the game's `url`. Wraps [getGames](/game/getGames) and [readBoxscore](/boxscore/readBoxscore).
+
+### get_team
+A team's conference, coach, elo rating and season statistics, each with its rank inside the division.
+
+| Argument | Type | Required | |
+| --- | --- | --- | --- |
+| `sport` | `cbb` \| `cfb` | yes | |
+| `team_id` | string | yes | From `search_entities` |
+| `season` | integer | no | |
+| `division` | string | no | |
+
+Returns `conference_id` and `coach_id` too, which is how an assistant reaches `get_conference` and `get_coach`. Wraps [team](/team/get), [getStats](/team/getStats), [getConference](/team/getConference) and [getCoach](/team/getCoach).
+
+### get_player
+A player's position and statistics for a season or their whole career, with their rank inside the division.
+
+| Argument | Type | Required | |
+| --- | --- | --- | --- |
+| `sport` | `cbb` \| `cfb` | yes | |
+| `player_id` | string | yes | From `search_entities` |
+| `season` | integer | no | |
+| `career` | boolean | no | `true` for career totals instead of one season |
+| `division` | string | no | |
+
+Wraps [player](/player/get) and the [player statistics](/statistics) table.
+
+### get_coach
+A coach's record and srating.io rating for a season or their career, with their rank inside the division.
+
+| Argument | Type | Required | |
+| --- | --- | --- | --- |
+| `sport` | `cbb` \| `cfb` | yes | |
+| `coach_id` | string | yes | From `search_entities` or `get_team` |
+| `season` | integer | no | |
+| `career` | boolean | no | `true` for career totals instead of one season |
+| `division` | string | no | |
+
+Wraps [coach](/coach/get) and the [coach statistics](/statistics) table.
+
+### get_conference
+A conference's aggregate statistics and rating for a season, with its rank among conferences.
+
+| Argument | Type | Required | |
+| --- | --- | --- | --- |
+| `sport` | `cbb` \| `cfb` | yes | |
+| `conference_id` | string | yes | From `get_team` |
+| `season` | integer | no | |
+| `division` | string | no | |
+
+Projected standings are not included. Wraps [conference](/conference/get) and the [conference statistics](/statistics) table.
+
+### get_rankings
+The top teams in the division for a season, in srating.io rank order, with each team's elo rating. Returns at most 50 teams.
+
+| Argument | Type | Required | |
+| --- | --- | --- | --- |
+| `sport` | `cbb` \| `cfb` | yes | |
+| `limit` | integer | no | 1 to 50. Defaults to 25 |
+| `season` | integer | no | The current season answers fastest |
+
+Teams come back in `rank` order, which does not always follow `elo`. Wraps [download](/ranking/download).
+
+```json
+{
+  "sport": "cbb",
+  "season": 2027,
+  "teams": [
+    {
+      "rank": 1,
+      "name": "Houston",
+      "elo": 1693,
+      "url": "https://srating.io/cbb/team/houston?utm_source=mcp&utm_medium=assistant&utm_campaign=connector"
+    },
+    {
+      "rank": 2,
+      "name": "Florida",
+      "elo": 1701,
+      "url": "https://srating.io/cbb/team/florida?utm_source=mcp&utm_medium=assistant&utm_campaign=connector"
+    },
+    {
+      "rank": 3,
+      "name": "Illinois",
+      "elo": 1651,
+      "url": "https://srating.io/cbb/team/illinois?utm_source=mcp&utm_medium=assistant&utm_campaign=connector"
+    }
+  ],
+  "ranking_url": "https://srating.io/cbb/ranking?utm_source=mcp&utm_medium=assistant&utm_campaign=connector",
+  "source": {
+    "api_call": "ranking.download",
+    "api_docs": "https://docs.srating.io/ranking/download"
+  }
+}
+```
+
+### get_stat_definition
+Explain a statistic, rating or column name -- `elo`, `aEM`, `aSOS`, `rank_delta` -- including the fields whose obvious reading is wrong. Answers from a fixed glossary, so it never calls the API.
+
+| Argument | Type | Required | |
+| --- | --- | --- | --- |
+| `term` | string | no | A column name or its on-site label. Omit to list every definition |
+
+Each match has `term`, `label`, `sport`, `definition` and, where it matters, a `caveat`.
+
+### Errors
+A tool that cannot answer returns `isError: true` and a message that says what to fix, so the assistant can correct itself and retry.
+
+```json
+{
+  "content": [
+    { "type": "text", "text": "No team found for team_id 'nope'. Use search_entities to find one." }
+  ],
+  "isError": true
+}
+```
+
+| Message | Cause |
+| --- | --- |
+| `Invalid option: expected one of "cbb"\|"cfb" at sport` | A sport other than `cbb` or `cfb` |
+| `unknown division 'x' for cbb. Use one of: d1, d2, d3` | A division that sport does not have |
+| `No team found for team_id '...'` | The id does not exist. The same message exists for players, coaches, conferences and games |
+| `monthly capacity for anonymous requests has been reached` | The shared allowance is used up for the month |
