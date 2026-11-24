@@ -24,6 +24,19 @@ claude mcp add --transport http srating https://mcp.srating.io/mcp
 
 **ChatGPT** -- turn on developer mode in settings, create a connector with the url above, and set authentication to none.
 
+**Codex**
+
+```console copy
+codex mcp add srating --url https://mcp.srating.io/mcp
+```
+
+Or in `~/.codex/config.toml`:
+
+```toml copy filename="config.toml"
+[mcp_servers.srating]
+url = "https://mcp.srating.io/mcp"
+```
+
 **Cursor, VS Code and other JSON-configured clients**
 
 ```json copy filename="mcp.json"
@@ -43,7 +56,7 @@ Then just ask: *"Who are the top 10 college basketball teams right now?"* or *"H
 - **Seasons are the ending year.** The 2026-27 basketball season is `2027`. Every tool defaults to the current season.
 - **Names go in, ids come out.** Tools take `sport` (`cbb` or `cfb`) and `division` as words. Assistants start with `search_entities` to turn a name into an id, then pass that id to the other tools.
 - **Every answer links back.** Results include a srating.io link for each team, player, coach, conference and game, plus the API call the data came from.
-- **Win probability and projected scores are not included.** Tools that touch a game or a conference standing return a link to srating.io projections instead.
+- **Win probability and projected scores are not included.** Tools that touch a game or a conference say so in a `projections_note` field.
 - **Capacity is shared.** Everyone using the MCP server draws from one monthly allowance. If it runs out, tools answer with an error saying so until the next month. For volume you can count on, use [the API](/) with your own key.
 
 ### MCP server or API?
@@ -56,3 +69,9 @@ Then just ask: *"Who are the top 10 college basketball teams right now?"* or *"H
 | Data | [Nine curated tools](/mcp/tools), capped row counts | Every documented class and function, bulk `read`, [downloads](/ranking/download) |
 | Predictions | Not included | Included with a subscription, see [getSchedulePredictions](/team/getSchedulePredictions) |
 | Cost | Free, shared capacity | Metered by [usage tokens](/tokens) per key |
+
+### Privacy and support
+
+The MCP server receives only the arguments the assistant sends, such as a team name or a date. It never sees your conversation, has no sign-in, and returns nothing about you. Results are cached and shared by everyone using it, and server logs record IP addresses. See the [privacy policy](https://srating.io/privacy).
+
+Questions or problems: [contact@srating.io](mailto:contact@srating.io).
